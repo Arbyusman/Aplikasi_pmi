@@ -52,6 +52,9 @@ class Beranda extends CI_Controller {
 
 		$data['title'] = 'PMI - Provinsi Sultra';
 
+		$data['base_url'] = $this->config->base_url();
+		// var_dump($data);
+		// die;
 		$this->load->view('frontend/home', $data);
 	}
 
