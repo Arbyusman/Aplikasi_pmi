@@ -48,19 +48,19 @@ include 'componen/header.php'
 							<option value="<?= $data->id_gol?>" <?= ($data->id_gol == $keterangan->id_gol) ? 'selected' : '' ?>><?= $data->nama_golongan?></option>
 						<?php } ?>
 					</select>
-					<label>Stok Darah</label>
-					<input type="text" class="form-control" name="stok_darah"  value="<?= $keterangan->stok_darah; ?>">
-					<label for="">Update Time</label>
-					<input type="datetime-local" class="form-control"  name="update_time" value="<?= $keterangan->update_time; ?>">
-					<label for="">Update By</label>
-					<input type="text" class="form-control"  name="update_by" value="<?= $keterangan->update_by; ?>">
+					<!-- <label>Stok Darah</label>
+						<input type="text" class="form-control" name="stok_darah"  value="<?= $keterangan->stok_darah; ?>"> -->
+						<label for="">Update Time</label>
+						<input type="datetime-local" class="form-control"  name="update_time" value="<?= $keterangan->update_time; ?>">
+						<label for="">Update By</label>
+						<input type="text" class="form-control"  name="update_by" value="<?= $keterangan->update_by; ?>">
 
-					<button type="submit" class="btn btn-primary mt-4"><i class="fas fa-save"></i> Update</button>
-				</div>
-			</form>
+						<button type="submit" class="btn btn-primary mt-4"><i class="fas fa-save"></i> Update</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
 
-<?php include 'componen/footer.php'?>
+	<?php include 'componen/footer.php'?>

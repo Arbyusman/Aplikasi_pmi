@@ -29,7 +29,7 @@ class Beranda extends CI_Controller {
 		$data['tampil'] = $this->M_ketersediaan->getGroupData();
 		
 		$data['jumbotron'] = $this->M_jumbotron->getDataJumboId();
-		
+
 
 		// script coutdown
 		$Datetime = $this->M_countdown->getTargetDatetimeCoutdown();
@@ -43,7 +43,7 @@ class Beranda extends CI_Controller {
 		$targetket = $isiket->ket;
 
 
-         // parsing data
+        // parsing data
 		$data['targetDatetime'] = $targetDatetime;
 		$data['instansi'] = $targetinstansi;
 		$data['kegiatan'] = $targetkeg;

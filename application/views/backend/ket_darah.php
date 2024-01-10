@@ -25,8 +25,7 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">Ketersediaan Darah
-
+			<h6 class="m-0 font-weight-bold text-primary">Ketersediaan
 				<!-- Button trigger modal -->
 				<button type="button" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 					<i class="fas fa-plus"></i>	Tambah Data
@@ -42,7 +41,6 @@
 							<th>No.</th>
 							<th>Instansi/UPTD Sultra</th>
 							<th>Golongan Darah</th>
-							<th>Stok Darah</th>
 							<th>Update Time</th>
 							<th>Update By</th>
 							<th>Aksi</th>
@@ -61,9 +59,8 @@
 							?>
 							<tr>
 								<td><?= $no++; ?></td>
-								<td><a href="<?= base_url('ketersediaan/detail_instansi/'). $data->id_keg; ?>" target="_blank"><?= $data->instansi; ?></a></td>
+								<td><a href=""><?= $data->instansi; ?></a></td>
 								<td><?= $data->nama_golongan; ?></td>
-								<td><?= $data->stok_darah; ?></td>
 								<td><?= $data->update_time; ?></td>
 								<td><?= $data->update_by; ?></td>
 								<td>
@@ -84,7 +81,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form method="POST" action="<?= base_url('Ketersediaan/aksiInsertKet')?>">
+			<form  action="<?= base_url('Ketersediaan/aksiInsertKet')?>" method="POST">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -105,7 +102,7 @@
 					</div> 
 					<div class="form-group">
 						<label for="">Golongan Darah</label>
-						<select class="form-control" name="golongan_darah" required>
+						<select class="form-control" name="golongan_darah" id="golonganDarah" required>
 							<option value="">- Pilih -</option>
 							<?php 
 							foreach ($golongan as $data) {
@@ -114,10 +111,10 @@
 							<?php } ?>
 						</select>
 					</div> 
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="">Stok Darah</label>
-						<input type="number" class="form-control"  name="stok_darah" required>
-					</div>
+						<input type="text" class="form-control" name="stok_darah" id="stok_darah" required>
+					</div> -->
 					<div class="form-group">
 						<label for="">Update Time</label>
 						<input type="datetime-local" class="form-control"  name="update_time" required>
@@ -135,6 +132,39 @@
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+	$(document).ready(function() {
+		$('#golonganDarah').on('change', function() {
+			var selectedUserId = $(this).val();
+
+			$.ajax({
+				url: '<?= base_url('Ketersediaan/getStokDarah'); ?>',
+				method: 'post',
+				data: { id_gol: selectedUserId },
+				dataType: 'json',
+				success: function(response) {
+					console.log(response);
+
+                // Check if the 'stok' property exists in the response
+                // if ('stok' in response) {
+                // 	$('#stok_darah').val(response.stok);
+                // } else {
+                // 	console.error('Invalid response format: Missing "stok" property');
+                // }
+            },
+            error: function(xhr, status, error) {
+            	console.error(xhr.responseText);
+            }
+        });
+		});
+	});
+
+</script>
+
+
 
 
 <?php include 'componen/footer.php'?>

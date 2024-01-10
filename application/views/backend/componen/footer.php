@@ -163,7 +163,7 @@ aria-hidden="true">
 
 
 <script>
-   $(document).ready(function() {
+ $(document).ready(function() {
         // Untuk sunting
         $('#edit-data').on('show.bs.modal', function (event) {
 
@@ -245,6 +245,9 @@ aria-hidden="true">
     });
 </script>
 
+
+
+
 <script>
     $(function() {
         // Mengaktifkan autocomplete pada input dengan ID 'autocomplete'
@@ -266,15 +269,34 @@ aria-hidden="true">
             } // Menentukan jumlah karakter sebelum permintaan autocomplete dilakukan
         });
     });
-</script>
+</script> 
 
 
+<!-- penjumlahan Stok -->
 <script>
-	$(function(){
+        // Attach input event listeners to the wb, prc, and tc inputs
+        $('#wb, #prc, #tc').on('input', function() {
+            calculateStok();
+        });
 
-		CKEDITOR.replace('editor')
-	});
-</script>
+        function calculateStok() {
+            var wbValue = parseFloat($('#wb').val()) || 0;
+            var prcValue = parseFloat($('#prc').val()) || 0;
+            var tcValue = parseFloat($('#tc').val()) || 0;
+
+            var total = wbValue + prcValue + tcValue;
+
+            $('#stok').val(total);
+        }
+    </script>
+
+
+    <script>
+       $(function(){
+
+          CKEDITOR.replace('editor')
+      });
+  </script>
 
 
 

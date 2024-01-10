@@ -3,7 +3,6 @@
 <div class="container-fluid">
 
 
-
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">Halaman Golongan Darah</h1>
 	<br>
@@ -45,15 +44,14 @@
 							<th>PRC</th>
 							<th>TC</th>
 							<th>Belum Serologi</th>
+							<th>Stok</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-
 						$no = 1;
 						foreach ($tampilkan as $data) {
-
 							?>
 							<tr>
 								<td><?= $no++;?></td>
@@ -62,6 +60,7 @@
 								<td><?= $data->prc; ?></td>
 								<td><?= $data->tc; ?></td>
 								<td><?= $data->belum_serologi; ?></td>
+								<td><?= $data->stok; ?></td>
 								<td>
 									<a href="<?= base_url('golongan_darah/form_edit/').$data->id_gol; ?>" class="btn btn-warning">Edit</a>
 									<a href="<?= base_url('golongan_darah/aksiDeleteGol/').$data->id_gol; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
@@ -94,15 +93,19 @@
 					</div> 
 					<div class="form-group">
 						<label for="">WB</label>
-						<input type="text" class="form-control"  name="wb" required>
+						<input type="text" class="form-control"  name="wb" id="wb" required>
 					</div>
 					<div class="form-group">
 						<label for="">PRC</label>
-						<input type="text" class="form-control"  name="prc" required>
+						<input type="text" class="form-control"  name="prc" id="prc" required>
 					</div> 
 					<div class="form-group">
 						<label for="">TC</label>
-						<input type="text" class="form-control"  name="tc" required>
+						<input type="text" class="form-control"  name="tc" id="tc" required>
+					</div> 
+					<div class="form-group">
+						<label for="">Stok</label>
+						<input type="text" class="form-control"  name="stok" id="stok" value="0" readonly>
 					</div> 
 					<div class="form-group">
 						<label for="">Belum Serologi</label>
@@ -111,12 +114,13 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Tutup</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-close"></i> Tutup</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
 
 
 <?php include 'componen/footer.php'?>

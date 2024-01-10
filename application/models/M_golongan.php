@@ -39,6 +39,8 @@ class M_golongan extends CI_Model {
 		$this->db->delete('gol_darah');
 	}
 
+
+
 }
 
 /* End of file M_golongan.php */

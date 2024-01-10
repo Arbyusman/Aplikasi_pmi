@@ -39,15 +39,19 @@ include 'componen/header.php'
 					</div> 
 					<div class="form-group">
 						<label for="">WB</label>
-						<input type="text" class="form-control"  name="wb" value="<?= $tampil->wb; ?>">
+						<input type="text" class="form-control"  name="wb" id="wb" value="<?= $tampil->wb; ?>">
 					</div>
 					<div class="form-group">
 						<label for="">PRC</label>
-						<input type="text" class="form-control"  name="prc" value="<?= $tampil->prc; ?>">
+						<input type="text" class="form-control"  name="prc" id="prc" value="<?= $tampil->prc; ?>">
 					</div>
 					<div class="form-group">
 						<label for="">TC</label>
-						<input type="text" class="form-control"  name="tc" value="<?= $tampil->tc; ?>">
+						<input type="text" class="form-control"  name="tc" id="tc" value="<?= $tampil->tc; ?>">
+					</div>
+					<div class="form-group">
+						<label for="">Stok</label>
+						<input type="text" class="form-control"  name="stok" id="stok" value="<?= $tampil->stok; ?>" readonly>
 					</div>
 					<div class="form-group">
 						<label for="">Belum Serologi</label>
@@ -59,7 +63,6 @@ include 'componen/header.php'
 		</div>
 	</div>
 </div>
-
 
 
 <?php include 'componen/footer.php'?>

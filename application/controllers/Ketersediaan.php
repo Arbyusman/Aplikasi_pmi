@@ -28,17 +28,31 @@ class Ketersediaan extends CI_Controller {
 
 		$data = array('tampil' => $tampilData);
 
-        // golongan
+    // golongan
     $data['golongan'] = $this->M_golongan->getDataGolongan();
 
-        // jadwal
+    // jadwal
     $data['jadwal'] = $this->M_jadwal->getDataJadwal();
 
-        // title
+    // title
     $data['title'] = 'PMI - Provinsi Sultra';
 
     $this->load->view('backend/ket_darah', $data);
 
+  }
+
+
+  public function getStokDarah() {
+
+    $id_gol = $this->input->post('golongan_darah');
+
+    $stok = $this->M_ketersediaan->get_StokDarah($id_gol);
+
+
+    var_dump($stok);exit();
+
+        // Return the stok as JSON
+    echo json_encode(array('stok' => $stok));
   }
 
   public function aksiInsertKet()
@@ -310,17 +324,19 @@ class Ketersediaan extends CI_Controller {
       $user_data = $this->M_ketersediaan->user_data($user_id);
 
       echo json_encode($user_data);
+
     }
 
 
     public function gabungan()
     {
 
-        // ketersediaan
-      // $tampilData = $this->M_ketersediaan->getDataKetersediaan();
+       // ketersediaan
+      //$tampilDataS = $this->M_ketersediaan->getDataKetersediaan();
 
 
       $tampilData = $this->M_ketersediaan->Jadwal_kegitan_model();
+
 
       foreach ($tampilData as $row) {
 
@@ -328,34 +344,7 @@ class Ketersediaan extends CI_Controller {
 
       }
 
-      // foreach ($tampilData as $row) {
-      //   $row->darah = $this->M_ketersediaan->getDataDarah($row->golongan_darah);
-      // }
-
-      // foreach ($tampilData as $rowa) {
-      //   foreach ($rowa->darah as $rowb) {
-      //     var_dump ($rowb);
-      //     die();
-      //   }
-      //   die();
-      // }
-
       $data = array('tampil' => $tampilData);
-
-
-      // var_dump($data);
-
-      // $tampil = array();
-
-      // foreach ($data['tampil'] as $key) {
-
-      //   $gol = $key->instansi;
-
-
-      //   $data['row'] = $this->M_ketersediaan->tampil_berapa($gol);
-
-
-      // }
 
 
         // golongan

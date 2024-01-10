@@ -12,7 +12,6 @@ class M_ketersediaan extends CI_Model {
 		// return $query->result();
 
 
-
 		// $this->db->select('ketersediaan_darah.*, gol_darah.nama_golongan, gol_darah.wb, gol_darah.tc, gol_darah.prc, jadwal_kegiatan.instansi, GROUP_CONCAT(gol_darah.nama_golongan) as golongan_concat');
 		// $this->db->from('ketersediaan_darah');
 		// $this->db->join('gol_darah', 'ketersediaan_darah.golongan_darah = gol_darah.id_gol');
@@ -53,7 +52,8 @@ class M_ketersediaan extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
-		$query = $this->db->get();
+		$this->db->join('ketersediaan_darah', 'jadwal_kegiatan.id_keg = ketersediaan_darah.jadwal_kegiatan');
+		$query = $this->db->get();	
 		return $query->result();
 	}
 
@@ -148,18 +148,26 @@ class M_ketersediaan extends CI_Model {
 	public function getGroupData()
 	{
 
-		// $this->db->select('golongan_darah, SUM(stok_darah) as stok_darah', FALSE);
+// $this->db->select('golongan_darah, SUM(stok_darah) as stok_darah', FALSE);
 // $this->db->from('ketersediaan_darah');
 // $this->db->group_by('golongan_darah');
 // 		$this->db->order_by('id_ket', 'ASC'); // Menambahkan pengurutan berdasarkan abjad (ascending)
 // 		return $result = $this->db->get()->result();
 
 
-		$this->db->select('gol_darah.nama_golongan, gol_darah.wb, gol_darah.prc, gol_darah.tc, gol_darah.belum_serologi, SUM(ketersediaan_darah.stok_darah) as stok_darah', FALSE);
-		$this->db->from('ketersediaan_darah');
-		$this->db->join('gol_darah', 'ketersediaan_darah.golongan_darah = gol_darah.id_gol');
-		$this->db->group_by('gol_darah.id_gol');
-		$this->db->order_by('gol_darah.id_gol', 'ASC'); // Assuming id_gol is the primary key in gol_darah
+		// $this->db->select('gol_darah.nama_golongan, gol_darah.wb, gol_darah.prc, gol_darah.tc, gol_darah.belum_serologi, SUM(ketersediaan_darah.stok_darah) as stok_darah', FALSE);
+		// $this->db->from('ketersediaan_darah');
+		// $this->db->join('gol_darah', 'ketersediaan_darah.golongan_darah = gol_darah.id_gol');
+		// $this->db->group_by('gol_darah.id_gol');
+		// $this->db->order_by('gol_darah.id_gol', 'ASC'); // Assuming id_gol is the primary key in gol_darah
+		// $result = $this->db->get()->result();
+		// return $result;
+
+
+		$this->db->select('gol_darah.nama_golongan, gol_darah.wb, gol_darah.prc, gol_darah.tc, gol_darah.belum_serologi, gol_darah.stok');
+		$this->db->from('gol_darah');
+		$this->db->group_by('id_gol');
+		$this->db->order_by('id_gol', 'ASC'); 
 		$result = $this->db->get()->result();
 		return $result;
 
@@ -200,12 +208,20 @@ class M_ketersediaan extends CI_Model {
 	public function get_autocomplete_data($search_term) {
         // Sesuaikan dengan logika Anda untuk mengambil data dari database
 		$this->db->like('email', $search_term);
-        $query = $this->db->get('user'); // Gantilah 'your_table' dengan nama tabel Anda
+			$query = $this->db->get('user'); // Gantilah 'your_table' dengan nama tabel Anda
 
-        return $query->result_array();
-    }
+			return $query->result_array();
+		}
 
-}
 
-/* End of file M_ketersediaan.php */
-/* Location: ./application/models/M_ketersediaan.php */
+		public function get_StokDarah($id_gol) {
+
+			$query = $this->db->get_where('gol_darah', array('id_gol' => $id_gol));
+
+			return $query->row_array();
+		}
+
+	}
+
+	/* End of file M_ketersediaan.php */
+	/* Location: ./application/models/M_ketersediaan.php */

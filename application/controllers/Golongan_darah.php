@@ -25,7 +25,6 @@ class Golongan_darah extends CI_Controller {
 
 		$data = array('tampilkan' => $tampilData);
 
-
 		$data['title'] = 'PMI - Provinsi Sultra';
 
 		$this->load->view('backend/form_golongan', $data);
@@ -38,6 +37,7 @@ class Golongan_darah extends CI_Controller {
 		$prc = $this->input->post('prc');
 		$tc = $this->input->post('tc');
 		$belum_serologi = $this->input->post('belum_serologi');
+		$stok = $this->input->post('stok');
 
 		$data = array(
 
@@ -45,7 +45,8 @@ class Golongan_darah extends CI_Controller {
 			'wb' => $wb,
 			'prc' => $prc,
 			'tc' => $tc,
-			'belum_serologi' => $belum_serologi
+			'belum_serologi' => $belum_serologi,
+			'stok' => $stok
 
 		);
 
@@ -78,13 +79,15 @@ class Golongan_darah extends CI_Controller {
 		$prc = $this->input->post('prc');
 		$tc = $this->input->post('tc');
 		$belum_serologi = $this->input->post('belum_serologi');
+		$stok = $this->input->post('stok');
 
 		$data = array(
 			'nama_golongan' => $gol,
 			'wb' => $wb,
 			'prc' => $prc,
 			'tc' => $tc,
-			'belum_serologi' => $belum_serologi
+			'belum_serologi' => $belum_serologi,
+			'stok' => $stok
 		);
 
 		$update = $this->M_golongan->updateGol($data,$id);

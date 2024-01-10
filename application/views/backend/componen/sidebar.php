@@ -32,57 +32,56 @@
 		</a>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="<?= base_url('ketersediaan')?>">Ketersediaan Darah</a>
-				<a class="collapse-item" href="<?= base_url('ketersediaan/datapendonor')?>">Data Pendonor</a>
-				<a class="collapse-item" href="<?= base_url('jadwal')?>">Jadwal Kegiatan</a>
-				<a class="collapse-item" href="<?= base_url('data_user')?>">Data User</a>
-				<a class="collapse-item" href="<?= base_url('golongan_darah')?>">Golongan Darah</a>
-				<a class="collapse-item" href="<?= base_url('ketersediaan/gabungan')?>">Form Table</a>
+				<!-- <a class="collapse-item" href="<?= base_url('ketersediaan')?>">Ketersediaan Darah</a>
+					<a class="collapse-item" href="<?= base_url('golongan_darah')?>">Golongan Darah</a> -->
+					<a class="collapse-item" href="<?= base_url('ketersediaan/datapendonor')?>">Data Pendonor</a>
+					<a class="collapse-item" href="<?= base_url('jadwal')?>">Jadwal Kegiatan</a>
+					<a class="collapse-item" href="<?= base_url('data_user')?>">Data User</a>
+					<a class="collapse-item" href="<?= base_url('ketersediaan/gabungan')?>">Stok Darah</a>
+				</div>
 			</div>
-		</div>
-	</li>
-
-
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-	<!-- Nav Item - Charts -->
-	<li class="nav-item">
-		<a class="nav-link" href="<?= base_url('tentang_admin')?>">
-			<i class="fas fa-book"></i>
-			<span>Tentang</span></a>
 		</li>
 
-		<!-- Nav Item - Tables -->
+		<!-- Divider -->
+		<hr class="sidebar-divider">
+		<!-- Nav Item - Charts -->
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url('kontak')?>">
-				<i class="fas fa-phone-square-alt"></i>
-				<span>Kontak</span></a>
+			<a class="nav-link" href="<?= base_url('tentang_admin')?>">
+				<i class="fas fa-book"></i>
+				<span>Tentang</span></a>
 			</li>
 
-
+			<!-- Nav Item - Tables -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('pesan')?>">
-					<i class="fas fa-bookmark"></i>
-					<span>Pesan</span></a>
+				<a class="nav-link" href="<?= base_url('kontak')?>">
+					<i class="fas fa-phone-square-alt"></i>
+					<span>Kontak</span></a>
 				</li>
 
-				<!-- Divider -->
-				<hr class="sidebar-divider d-none d-md-block">
 
-				<style>
-					
-					#sidebarToggle {
-						border: none !important;
-						border-radius: 50% !important;
-					}
-				</style>
+				<li class="nav-item">
+					<a class="nav-link" href="<?= base_url('pesan')?>">
+						<i class="fas fa-bookmark"></i>
+						<span>Pesan</span></a>
+					</li>
 
-				<!-- Sidebar Toggler (Sidebar) -->
-				<div class="text-center d-none d-md-inline">
-					<button class="rounded-circle border-0" id="sidebarToggle"></button>
-				</div>
+					<!-- Divider -->
+					<hr class="sidebar-divider d-none d-md-block">
+
+					<style>
+						
+						#sidebarToggle {
+							border: none !important;
+							border-radius: 50% !important;
+						}
+					</style>
+
+					<!-- Sidebar Toggler (Sidebar) -->
+					<div class="text-center d-none d-md-inline">
+						<button class="rounded-circle border-0" id="sidebarToggle"></button>
+					</div>
 
 
-			</ul>
-			<!-- End of Sidebar -->
+				</ul>
+				<!-- End of Sidebar -->
 

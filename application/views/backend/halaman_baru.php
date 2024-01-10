@@ -14,6 +14,8 @@ include 'componen/header.php'
 	.custom-table a{color: #0033cc;}
 	.custom-table a:hover{color: #f00;}
 	.page-header{background-color: #eee;}
+	.tbtns{border: 0;outline: 0;background-color: transparent;font-size: 13px;cursor: pointer;}
+
 </style>
 <script>
 	$(document).ready(function () {
@@ -28,6 +30,10 @@ include 'componen/header.php'
 
 
 <div class="container">
+	<div style="float: right;">
+		<a href="<?= base_url('golongan_darah')?>" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Golongan Darah</a>
+		<a href="<?= base_url('Ketersediaan') ?>" class="btn btn-warning mb-5"><i class="fas fa-plus"></i> Ketersediaan Darah</a>
+	</div>
 	<table class="custom-table">
 		<thead>
 			<tr>
@@ -46,46 +52,39 @@ include 'componen/header.php'
 			foreach ($tampil as $data) {
 				?>
 				<tbody>
-
 					<td colspan="6" class="page-header">
 						<button type="button" class="tbtn">
-							<i class="fa fa-plus-circle fa-minus-circle"></i><?= $data->instansi; ?></button>
-							<div style="float: right;">
-								<button class="btn btn-warning">Edit</button>
-								<button class="btn btn-danger">Delete</button>
-							</div>
-						</td>
-					</tr>
+							<i class="fa fa-plus-circle fa-minus-circle"></i><?= $data->instansi; ?>
+						</button>
+						<button type="button" class="tbtns ml-12">
+							<?= $data->update_time; ?>
+						</button>
 
-					<tr class="toggler toggler1">
+						<div style="float: right;">
+								<!-- <button class="btn btn-warning">Edit</button>
+									<button class="btn btn-danger">Delete</button> -->
+								</div>
+							</td>
+						</tr>
 
-						<td rowspan="5"></td>
-
-
-
-						<?php
-						// var_dump ($data->kegiatan);
-						// die();
-						foreach ($data->kegiatan as $row_kegiatan) { ?>
-							<tr>
-								
-								<td><?= $row_kegiatan->nama_golongan; ?></td>
-								<td><?= $row_kegiatan->wb; ?></td>
-								<td><?= $row_kegiatan->tc; ?></td>
-								<td><?= $row_kegiatan->prc; ?></td>
-								<td><?= $row_kegiatan->stok_darah; ?></td>							
-
-							</tr>
+						<tr class="toggler toggler1">
+							<td rowspan="5"></td>
 							<?php
-						} 
+							foreach ($data->kegiatan as $row_kegiatan) { 
+								?>
+								<tr rowspan="5">
+									<td><?= $row_kegiatan->nama_golongan; ?></td>
+									<td><?= $row_kegiatan->wb; ?></td>
+									<td><?= $row_kegiatan->tc; ?></td>
+									<td><?= $row_kegiatan->prc; ?></td>
+									<td><?= $row_kegiatan->stok_darah; ?></td>							
+								</tr>
+							<?php } ?>
+						</tr>
+					</tbody>
+				<?php }?>
+			</table>
+		</div>	
 
-						?>
 
-					</tr>
-				</tbody>
-			<?php }?>
-		</table>
-	</div>	
-
-
-	<?php include 'componen/footer.php'?>
+		<?php include 'componen/footer.php'?>
