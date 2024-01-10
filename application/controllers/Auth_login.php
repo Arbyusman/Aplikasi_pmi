@@ -12,6 +12,8 @@ class Auth_login extends CI_Controller {
 		$this->load->library('session');
 	}
 
+	
+
 	public function index()
 	{
 		$data['title'] = 'PMI - Provinsi Sultra';
