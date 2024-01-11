@@ -21,7 +21,7 @@ class M_golongan extends CI_Model {
 
 	public function DataGolongan($id)
 	{
-		$this->db->where('id_gol', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get('gol_darah');
 		return $query->row();
 	}
@@ -29,13 +29,13 @@ class M_golongan extends CI_Model {
 
 	public function updateGol($data, $id)
 	{
-		$this->db->where('id_gol', $id);
+		$this->db->where('id', $id);
 		$this->db->update('gol_darah', $data);
 	}
 
 	public function deleteGol($id)
 	{
-		$this->db->where('id_gol', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('gol_darah');
 	}
 

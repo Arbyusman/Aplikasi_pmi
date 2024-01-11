@@ -15,7 +15,7 @@ class M_jadwal extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
-		$this->db->order_by('id_keg', 'ASC'); 
+		$this->db->order_by('id', 'ASC'); 
 		$this->db->limit(3); 
 		$query = $this->db->get();
 		return $query->result();
@@ -27,7 +27,7 @@ class M_jadwal extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
-		$this->db->order_by('id_keg', 'ASC'); 
+		$this->db->order_by('id', 'ASC'); 
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -54,21 +54,21 @@ class M_jadwal extends CI_Model {
 	}
 
 	public function getTampilkeg($id) {
-		$this->db->where('id_keg', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get('jadwal_kegiatan');
 		return $query->row();
 	}
 
 	public function updateJadwal($data, $id) {
 
-		$this->db->where('id_keg', $id);
+		$this->db->where('id', $id);
 		$this->db->update('jadwal_kegiatan', $data);
 
 	}
 
 	public function deleteKeg($id)
 	{
-		$this->db->where('id_keg', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('jadwal_kegiatan');
 	}
 

@@ -31,7 +31,7 @@ class Ganti_password_user extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('frontend/ganti_password');
 		} else {
-			$user_id = $this->session->userdata('id_user');
+			$user_id = $this->session->userdata('id');
 
 			$password_baru = $this->input->post('pass_new');
 
@@ -40,7 +40,7 @@ class Ganti_password_user extends CI_Controller {
 			$this->M_password_user->update($user_id, $data, 'user');
 
 
-			$this->session->unset_userdata('id_user'); 
+			$this->session->unset_userdata('id'); 
 			$this->session->sess_destroy();
 			echo "<script>
 			alert('Password Berhasil Diganti!');

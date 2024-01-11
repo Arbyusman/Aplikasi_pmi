@@ -24,7 +24,7 @@ class Donor_darah extends CI_Controller {
 		//$data['tampil'] = $this->M_donor_darah->get_ketersediaanD();
 
 
-		$id = $this->session->userdata('id_user');
+		$id = $this->session->userdata('id');
 
 		$data['tampil'] = $this->M_donor_darah->get_user($id);
 

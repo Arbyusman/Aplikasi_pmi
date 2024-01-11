@@ -19,7 +19,7 @@ class M_kontak extends CI_Model {
 
 	public function Tampildataperidkontak()
 	{
-		$query = $this->db->get_where('kontak', array('id_kontak' => 1));
+		$query = $this->db->get_where('kontak', array('id' => 1));
 		$row = $query->result();
 		return $row;
 	}
@@ -27,7 +27,7 @@ class M_kontak extends CI_Model {
 
 	public function updateDataKontak($data, $id) {
 
-		$this->db->where('id_kontak', $id);
+		$this->db->where('id', $id);
 		$this->db->update('kontak', $data);
 
 	}

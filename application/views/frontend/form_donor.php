@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Jakarta');
 
 include'componens/header.php'; 
 
-$ids = $this->session->userdata('id_user');
+$ids = $this->session->userdata('id');
 
 ?>
 
@@ -151,7 +151,7 @@ $ids = $this->session->userdata('id_user');
 									<div class="row">
 										<div class="col-sm-4">
 											<label for="">Email</label>
-											<input type="hidden" name="user_id" id="user_id" value="<?= $tampil['id_user']; ?>">
+											<input type="hidden" name="user_id" id="user_id" value="<?= $tampil['id']; ?>">
 											<input type="email" class="form-control" id="email" value="<?= $tampil['email']; ?>" name="email" readonly>
 										</div>
 										<div class="col-sm-4">

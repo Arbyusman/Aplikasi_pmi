@@ -11,7 +11,7 @@ class M_datauser extends CI_Model {
 	}
 	
 	public function getTampilUse($id) {
-		$this->db->where('id_user', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get('user');
 		return $query->row();
 	}

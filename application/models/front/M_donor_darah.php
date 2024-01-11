@@ -6,7 +6,7 @@ class M_donor_darah extends CI_Model {
 	public function get_autocomplete($title)
 	{
 		$this->db->like('no_ktp', $title, 'BOTH');
-		$this->db->order_by('id_user', 'asc');
+		$this->db->order_by('id', 'asc');
 		$this->db->limit(10);
 		return $this->db->get('user')->result();
 	}
@@ -26,9 +26,9 @@ class M_donor_darah extends CI_Model {
 
 	public function get_user($id)
 	{
-		$this->db->select('id_user,email,nama_lengkap,no_hp');
+		$this->db->select('id,email,nama_lengkap,no_hp');
 		$this->db->from('user');
-		$this->db->where('id_user', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->row_array();
 	}

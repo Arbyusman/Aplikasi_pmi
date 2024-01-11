@@ -22,7 +22,7 @@ class M_tentang extends CI_Model {
 
 	public function Tampildataperid()
 	{
-		$query = $this->db->get_where('tentang', array('id_tentang' => 1));
+		$query = $this->db->get_where('tentang', array('id' => 1));
 		$row = $query->result();
 		return $row;
 	}
@@ -31,7 +31,7 @@ class M_tentang extends CI_Model {
 	public function updateTentang($data, $id) 
 	{
 
-		$this->db->where('id_tentang', $id);
+		$this->db->where('id', $id);
 		$this->db->update('tentang', $data);
 
 	}

@@ -7,7 +7,7 @@ class M_datapendonor extends CI_Model {
 
 		$this->db->select('*');
 		$this->db->from('form_pendonor');
-		$this->db->join('user', 'form_pendonor.user_id = user.id_user');
+		$this->db->join('user', 'form_pendonor.user_id = user.id');
 		$query = $this->db->get();
 		return $query->result();
 
@@ -19,7 +19,7 @@ class M_datapendonor extends CI_Model {
 		$this->db->from('user');
 		$this->db->where('user.umur', $umur);
 		$this->db->where('user.jenis_kelamin', $jenis_kelamin);
-		$this->db->join('form_pendonor', 'form_pendonor.user_id = user.id_user');
+		$this->db->join('form_pendonor', 'form_pendonor.user_id = user.id');
 		$this->db->where('form_pendonor.golongan_darah', $golongan_darah); 
 		$query = $this->db->get();
 
@@ -28,7 +28,7 @@ class M_datapendonor extends CI_Model {
 
 
 	public function getTampilDon($id) {
-		$this->db->where('id_pendonor', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get('form_pendonor');
 		return $query->row();
 	}
@@ -36,7 +36,7 @@ class M_datapendonor extends CI_Model {
 
 	public function updateDon($data, $id) {
 
-		$this->db->where('id_pendonor', $id);
+		$this->db->where('id', $id);
 		$this->db->update('form_pendonor', $data);
 
 	}
@@ -44,7 +44,7 @@ class M_datapendonor extends CI_Model {
 
 	public function deleteDon($id)
 	{
-		$this->db->where('id_pendonor', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('form_pendonor');
 	}
 

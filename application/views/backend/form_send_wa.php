@@ -36,7 +36,7 @@ include 'componen/header.php'
 				<div class="form-group">
 					<div class="form-group">
 						<label>No.HP</label>
-						<input type="hidden" name="id" value="<?= $dat_user->id_user; ?>">
+						<input type="hidden" name="id" value="<?= $dat_user->id; ?>">
 						<input type="text" class="form-control" name="hp_wa" value="<?= $dat_user->no_hp; ?>">
 					</div>
 					<div class="form-group">

@@ -229,7 +229,7 @@ aria-hidden="true">
             $.ajax({
                 url: '<?= base_url('Ketersediaan/get_user_data'); ?>', // Ganti dengan URL controller yang sesuai
                 method: 'post',
-                data: { id_user: selectedUserId },
+                data: { id: selectedUserId },
                 dataType: 'json',
                 success: function(response) {
 

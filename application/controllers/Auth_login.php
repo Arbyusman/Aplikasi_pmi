@@ -37,7 +37,7 @@ class Auth_login extends CI_Controller {
 		if ($user) {
 
 			$data_session = array(
-				'id_user' => $user->id_user,
+				'id' => $user->id,
 				'name' => $email,
 				'status' => "login"
 			);

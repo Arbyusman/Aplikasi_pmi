@@ -319,7 +319,7 @@ class Ketersediaan extends CI_Controller {
 
      public function get_user_data() {
 
-      $user_id = $this->input->post('id_user');
+      $user_id = $this->input->post('id');
 
       $user_data = $this->M_ketersediaan->user_data($user_id);
 

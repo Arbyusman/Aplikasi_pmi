@@ -14,7 +14,7 @@ class M_pesan extends CI_Model {
 
 	public function deletePes($id)
 	{
-		$this->db->where('id_pesan', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('pesan');
 	}
 

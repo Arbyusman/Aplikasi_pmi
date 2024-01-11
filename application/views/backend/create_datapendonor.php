@@ -164,7 +164,7 @@
 												<?php 
 												foreach ($tampil_user as $key) {
 													?>
-													<option value="<?= $key->id_user?>"><?= $key->email?></option>
+													<option value="<?= $key->id?>"><?= $key->email?></option>
 												<?php } ?>
 											</select>
 										</div>

@@ -54,7 +54,7 @@
 								<td><?= $data->nama_lengkap; ?></td>
 								<td><?= $data->no_hp; ?></td>
 								<td>
-									<a href="<?php echo base_url('Data_user/tampil_data/'). $data->id_user ?>" class="btn btn-success"><i class="fab fa-whatsapp"></i> Send</a>
+									<a href="<?php echo base_url('Data_user/tampil_data/'). $data->id ?>" class="btn btn-success"><i class="fab fa-whatsapp"></i> Send</a>
 								</td>
 							</tr>
 

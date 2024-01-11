@@ -4,7 +4,7 @@ date_default_timezone_set('Asia/Jakarta');
 include'componens/header.php'; 
 
 
-$ids = $this->session->userdata('id_user');
+$ids = $this->session->userdata('id');
 
 
 ?>
