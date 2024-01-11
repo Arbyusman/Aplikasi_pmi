@@ -347,8 +347,8 @@ include'componens/header.php';
 			<div class="row fixed-element">
 				<?php 
 				foreach ($tampil as $data) {
-					 // Tentukan kelas warna latar belakang berdasarkan nilai stok
-					$warna_latar = ($data->stok > 9) ? 'hijau' : 'merah';
+					 // Tentukan kelas warna latar belakang berdasarkan nilai stok_darah
+					$warna_latar = ($data->stok_darah > 9) ? 'hijau' : 'merah';
 					?>
 
 					<div class="col-lg-3 col-md-6 align-items-stretch">
@@ -364,7 +364,7 @@ include'componens/header.php';
 								<p>TC: <?= $data->tc; ?></p>
 							</div>
 							<br>
-							<h5 style="color: white;">Stok Darah : <?= $data->stok; ?> </h5>
+							<h5 style="color: white;">Stok Darah : <?= $data->stok_darah; ?> </h5>
 						</div>
 					</div>
 				<?php } ?>

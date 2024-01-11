@@ -101,7 +101,7 @@ aria-hidden="true">
         var nama_lengkap = $('#nama_lengkap').val();
         var no_hp = $('#no_hp').val();
         var no_kartudonor = $("#no_kartudonor").val();
-        var golongan_darah = $("#golongan_darah").val();
+        var golongan_darah_id = $("#golongan_darah_id").val();
         var bersedia_donor_puasa = $("#bersedia_donor_puasa").val();
         var bersedia_donor_diluar_rutin = $("#bersedia_donor_diluar_rutin").val();
         var donor_terakhir = $("#donor_terakhir").val();
@@ -117,7 +117,7 @@ aria-hidden="true">
 
         // Anda dapat menambahkan lebih banyak variabel sesuai dengan input form yang ada
         // Memeriksa apakah nilai input tidak kosong
-        if (email === '' || nama_lengkap === '' || no_hp === '' || no_kartudonor === '' || golongan_darah === '' || bersedia_donor_puasa === '' || bersedia_donor_diluar_rutin === '' || donor_terakhir === '' || donor_keberapa === '' || tempat_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || golongan_darah === '' || no_ktp === '' || alamat === '' || pekerjaan === '' || jenis_kelamin === '' || tempat_lahir === '' || tgl_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || user_id === '') {
+        if (email === '' || nama_lengkap === '' || no_hp === '' || no_kartudonor === '' || golongan_darah_id === '' || bersedia_donor_puasa === '' || bersedia_donor_diluar_rutin === '' || donor_terakhir === '' || donor_keberapa === '' || tempat_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || golongan_darah_id === '' || no_ktp === '' || alamat === '' || pekerjaan === '' || jenis_kelamin === '' || tempat_lahir === '' || tgl_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || user_id === '') {
             // Menampilkan pesan kesalahan jika ada input yang kosong
             Swal.fire({
                 title: "Error!",
@@ -181,11 +181,11 @@ aria-hidden="true">
         var rows = $("#dataTable tbody tr"); // Mendapatkan semua baris tabel
 
         rows.each(function() {
-            var stokDarah = parseInt($(this).find("td:eq(2)").text()); // Mengambil nilai stok_darah dari kolom ke-3
+            var stok_darahDarah = parseInt($(this).find("td:eq(2)").text()); // Mengambil nilai stok_darah dari kolom ke-3
 
-            if (stokDarah === 3) {
+            if (stok_darahDarah === 3) {
                 // Menampilkan alert jika stok_darah kurang dari atau sama dengan 3
-                alert("Peringatan: Stok darah tinggal " + stokDarah + " kantong di golongan darah " + $(this).find("td:eq(1)").text());
+                alert("Peringatan: Stok Darah tinggal " + stok_darahDarah + " kantong di golongan darah " + $(this).find("td:eq(1)").text());
 
                  // Tambahkan konfirmasi dialog
                  var confirmNotif = confirm("Apakah Anda ingin mengirim notifikasi ke WhatsApp?");
@@ -272,21 +272,21 @@ aria-hidden="true">
 </script> 
 
 
-<!-- penjumlahan Stok -->
+<!-- penjumlahan stok_darah -->
 <script>
         // Attach input event listeners to the wb, prc, and tc inputs
         $('#wb, #prc, #tc').on('input', function() {
-            calculateStok();
+            calculatestok_darah();
         });
 
-        function calculateStok() {
+        function calculatestok_darah() {
             var wbValue = parseFloat($('#wb').val()) || 0;
             var prcValue = parseFloat($('#prc').val()) || 0;
             var tcValue = parseFloat($('#tc').val()) || 0;
 
             var total = wbValue + prcValue + tcValue;
 
-            $('#stok').val(total);
+            $('#stok_darah').val(total);
         }
     </script>
 

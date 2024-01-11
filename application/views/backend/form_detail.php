@@ -89,7 +89,7 @@
 					</div> 
 					<div class="form-group">
 						<label for="">Golongan Darah</label>
-						<select class="form-control" name="golongan_darah" required>
+						<select class="form-control" name="golongan_darah_id" required>
 							<option value="">- Pilih -</option>
 							<?php 
 							foreach ($golongan as $data) {

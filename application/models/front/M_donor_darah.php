@@ -14,11 +14,11 @@ class M_donor_darah extends CI_Model {
 	public function get_ketersediaanD()
 	{
 
-		$this->db->select('t2.no_telepon,t1.no_telepon_kantor,k.golongan_darah, SUM(k.stok_darah) as stok_darah', FALSE);
+		$this->db->select('t2.no_telepon,t1.no_telepon_kantor,k.golongan_darah_id, SUM(k.stok_darah) as stok_darah', FALSE);
 		$this->db->from('ketersediaan_darah k');
-		$this->db->join('form_pendonor t1', 't1.golongan_darah = k.golongan_darah', 'LEFT'); 
+		$this->db->join('form_pendonor t1', 't1.golongan_darah_id = k.golongan_darah_id', 'LEFT'); 
 		$this->db->join('user t2', 't2.username = t1.user_id', 'LEFT'); 
-		$this->db->group_by('k.golongan_darah');
+		$this->db->group_by('k.golongan_darah_id');
 		return $result = $this->db->get()->result();
 
 	}

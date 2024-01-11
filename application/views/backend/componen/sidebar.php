@@ -33,7 +33,7 @@
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<!-- <a class="collapse-item" href="<?= base_url('ketersediaan')?>">Ketersediaan Darah</a>
-					<a class="collapse-item" href="<?= base_url('golongan_darah')?>">Golongan Darah</a> -->
+					<a class="collapse-item" href="<?= base_url('golongan_darah_id')?>">Golongan Darah</a> -->
 					<a class="collapse-item" href="<?= base_url('ketersediaan/datapendonor')?>">Data Pendonor</a>
 					<a class="collapse-item" href="<?= base_url('jadwal')?>">Jadwal Kegiatan</a>
 					<a class="collapse-item" href="<?= base_url('data_user')?>">Data User</a>

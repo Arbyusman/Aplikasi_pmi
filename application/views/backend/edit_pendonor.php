@@ -39,7 +39,7 @@ include 'componen/header.php'
 					<label>No.Telephone Kantor</label>
 					<input type="text" class="form-control"  name="no_telepon_kantor" value="<?= $pendonor->no_telepon_kantor;?>">
 					<label>Golongan Darah</label>
-					<input type="text" class="form-control"  name="golongan_darah" value="<?= $pendonor->golongan_darah;?>">
+					<input type="text" class="form-control"  name="golongan_darah_id" value="<?= $pendonor->golongan_darah_id;?>">
 					<label>Bersedia donor bulan puasa</label>
 					<select class="form-control" name="bersedia_donor_puasa">
 						<option value="ya" <?= ($pendonor->bersedia_donor_puasa == 'ya') ? 'selected' : ''; ?>>Ya</option>

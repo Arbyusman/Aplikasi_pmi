@@ -82,7 +82,7 @@ include'componens/header.php';
 					<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
 						<div class="icon-box">
 							<div class="icon"><i class="fas fa-hospital"></i></div>
-							<h4><a href=""> Golongan Darah (<?= $data->golongan_darah; ?>)</a></h4>
+							<h4><a href=""> Golongan Darah (<?= $data->golongan_darah_id; ?>)</a></h4>
 							<p>Stok Darah : <?= $data->stok_darah; ?> </p>
 						</div>
 					</div>

@@ -41,6 +41,7 @@
 							<th>No.</th>
 							<th>Instansi/UPTD Sultra</th>
 							<th>Golongan Darah</th>
+							<th>Stok</th>
 							<th>Update Time</th>
 							<th>Update By</th>
 							<th>Aksi</th>
@@ -49,18 +50,19 @@
 					<tbody>
 						<?php
 
-						$totalStok = 0;
+						$totalstok_darah = 0;
 						$no = 1;
 						foreach ($tampil as $key => $data) {
 
-							$golonganDarah = $data->golongan_darah;
-							$totalStok += $data->stok_darah;
+							$golonganDarah = $data->golongan_darah_id;
+							$totalstok_darah += $data->stok_darah;
 
 							?>
 							<tr>
 								<td><?= $no++; ?></td>
 								<td><a href=""><?= $data->instansi; ?></a></td>
 								<td><?= $data->nama_golongan; ?></td>
+								<td><?= $data->stok_darah; ?></td>
 								<td><?= $data->update_time; ?></td>
 								<td><?= $data->update_by; ?></td>
 								<td>
@@ -102,7 +104,7 @@
 					</div> 
 					<div class="form-group">
 						<label for="">Golongan Darah</label>
-						<select class="form-control" name="golongan_darah" id="golonganDarah" required>
+						<select class="form-control" name="golongan_darah_id" id="golonganDarah" required>
 							<option value="">- Pilih -</option>
 							<?php 
 							foreach ($golongan as $data) {
@@ -111,10 +113,10 @@
 							<?php } ?>
 						</select>
 					</div> 
-					<!-- <div class="form-group">
-						<label for="">Stok Darah</label>
-						<input type="text" class="form-control" name="stok_darah" id="stok_darah" required>
-					</div> -->
+					<div class="form-group">
+						<label for="">Stok Darah Darah</label>
+						<input type="number" class="form-control" name="stok_darah" id="stok_darah" required>
+					</div>
 					<div class="form-group">
 						<label for="">Update Time</label>
 						<input type="datetime-local" class="form-control"  name="update_time" required>
@@ -141,18 +143,18 @@
 			var selectedUserId = $(this).val();
 
 			$.ajax({
-				url: '<?= base_url('Ketersediaan/getStokDarah'); ?>',
+				url: '<?= base_url('Ketersediaan/getstok_darahDarah'); ?>',
 				method: 'post',
 				data: { id: selectedUserId },
 				dataType: 'json',
 				success: function(response) {
 					console.log(response);
 
-                // Check if the 'stok' property exists in the response
-                // if ('stok' in response) {
-                // 	$('#stok_darah').val(response.stok);
+                // Check if the 'stok_darah' property exists in the response
+                // if ('stok_darah' in response) {
+                // 	$('#stok_darah').val(response.stok_darah);
                 // } else {
-                // 	console.error('Invalid response format: Missing "stok" property');
+                // 	console.error('Invalid response format: Missing "stok_darah" property');
                 // }
             },
             error: function(xhr, status, error) {

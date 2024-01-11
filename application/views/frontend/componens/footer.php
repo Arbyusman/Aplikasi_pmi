@@ -286,7 +286,7 @@
             // Mengambil nilai input
             var user_id = $('#user_id').val();
             var no_kartudonor = $("#no_kartudonor").val();
-            var golongan_darah = $("#golongan_darah").val();
+            var golongan_darah_id = $("#golongan_darah_id").val();
             var bersedia_donor_puasa = $("#bersedia_donor_puasa").val();
             var bersedia_donor_diluar_rutin = $("#bersedia_donor_diluar_rutin").val();
             var donor_terakhir = $("#donor_terakhir").val();
@@ -302,7 +302,7 @@
 
             // Anda dapat menambahkan lebih banyak variabel sesuai dengan input form yang ada
             // Memeriksa apakah nilai input tidak kosong
-            if (no_kartudonor === '' || golongan_darah === '' || bersedia_donor_puasa === '' || bersedia_donor_diluar_rutin === '' || donor_terakhir === '' || donor_keberapa === '' || tempat_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || golongan_darah === '' || no_ktp === '' || alamat === '' || pekerjaan === '' || jenis_kelamin === '' || tempat_lahir === '' || tgl_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || user_id === '') {
+            if (no_kartudonor === '' || golongan_darah_id === '' || bersedia_donor_puasa === '' || bersedia_donor_diluar_rutin === '' || donor_terakhir === '' || donor_keberapa === '' || tempat_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || golongan_darah_id === '' || no_ktp === '' || alamat === '' || pekerjaan === '' || jenis_kelamin === '' || tempat_lahir === '' || tgl_lahir === '' || alamat_kantor === '' || no_telepon_kantor === '' || user_id === '') {
                 // Menampilkan pesan kesalahan jika ada input yang kosong
                 Swal.fire({
                     title: "Error!",

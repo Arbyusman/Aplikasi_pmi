@@ -41,7 +41,7 @@ include 'componen/header.php'
 					</select>
 					<label>Golongan Darah</label>
 					<input type="hidden" name="id" value="<?= $keterangan->id; ?>">
-					<select class="form-control" name="golongan_darah" required>
+					<select class="form-control" name="golongan_darah_id" required>
 						<?php 
 						foreach ($golongan as $data) {
 							?>

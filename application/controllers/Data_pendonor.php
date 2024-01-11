@@ -25,12 +25,12 @@ class Data_pendonor extends CI_Controller {
 
 	public function aksi_pencarian() {
         // Ambil data pencarian dari form
-		$golongan_darah = $this->input->post('golongan_darah');
+		$golongan_darah_id = $this->input->post('golongan_darah_id');
 		$umur = $this->input->post('umur');
 		$jenis_kelamin = $this->input->post('jenis_kelamin');
 
         // Panggil model atau lakukan query sesuai dengan kriteria pencarian
-		$data['data_pendonor'] = $this->M_datapendonor->cari_data_pendonor($golongan_darah, $umur, $jenis_kelamin);
+		$data['data_pendonor'] = $this->M_datapendonor->cari_data_pendonor($golongan_darah_id, $umur, $jenis_kelamin);
 
 		// Jika tidak ada hasil pencarian, muat semua data
 		if (empty($data['data_pendonor'])) {

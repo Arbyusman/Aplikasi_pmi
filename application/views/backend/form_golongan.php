@@ -89,27 +89,27 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="">Golongan Darah</label>
-						<input type="text" class="form-control"  name="golongan_darah" required>
+						<input type="number" class="form-control"  name="golongan_darah" required>
 					</div> 
 					<div class="form-group">
 						<label for="">WB</label>
-						<input type="text" class="form-control"  name="wb" id="wb" required>
+						<input type="number" class="form-control"  name="wb" id="wb" required>
 					</div>
 					<div class="form-group">
 						<label for="">PRC</label>
-						<input type="text" class="form-control"  name="prc" id="prc" required>
+						<input type="number" class="form-control"  name="prc" id="prc" required>
 					</div> 
 					<div class="form-group">
 						<label for="">TC</label>
-						<input type="text" class="form-control"  name="tc" id="tc" required>
+						<input type="number" class="form-control"  name="tc" id="tc" required>
 					</div> 
 					<div class="form-group">
 						<label for="">Stok</label>
-						<input type="text" class="form-control"  name="stok" id="stok" value="0" readonly>
+						<input type="number" class="form-control"  name="stok" id="stok" placeholder="0" readonly>
 					</div> 
 					<div class="form-group">
 						<label for="">Belum Serologi</label>
-						<input type="text" class="form-control"  name="belum_serologi" required>
+						<input type="number" class="form-control"  name="belum_serologi" required>
 					</div> 
 				</div>
 				<div class="modal-footer">
@@ -124,3 +124,28 @@
 
 
 <?php include 'componen/footer.php'?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get references to the input fields
+        var wbInput = document.getElementById('wb');
+        var prcInput = document.getElementById('prc');
+        var tcInput = document.getElementById('tc');
+        var stokInput = document.getElementById('stok');
+
+        wbInput.addEventListener('input', updateStok);
+        prcInput.addEventListener('input', updateStok);
+        tcInput.addEventListener('input', updateStok);
+
+        function updateStok() {
+            // Get values of WB, PRC, and TC
+            var wbValue = parseInt(wbInput.value) || 0;
+            var prcValue = parseInt(prcInput.value) || 0;
+            var tcValue = parseInt(tcInput.value) || 0;
+
+            var sum = wbValue + prcValue + tcValue;
+
+            stokInput.value = sum;
+        }
+    });
+</script>

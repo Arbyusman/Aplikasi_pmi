@@ -19,8 +19,8 @@ include'componens/header.php';
 						<!-- Form Pencarian -->
 						<form action="<?= site_url('data_pendonor/aksi_pencarian'); ?>" method="post">
 							<div class="form-group">
-								<label for="golongan_darah">Golongan Darah:</label>
-								<select class="form-control" name="golongan_darah">	
+								<label for="golongan_darah_id">Golongan Darah:</label>
+								<select class="form-control" name="golongan_darah_id">	
 									<option value="">- Pilih -</option>
 									<option value="A">A</option>
 									<option value="B">B</option>

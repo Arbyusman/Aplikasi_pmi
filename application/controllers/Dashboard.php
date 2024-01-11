@@ -20,10 +20,10 @@ class Dashboard extends CI_Controller {
 
 		// $data = array('tampil' => $tampilData);
 
-		// $data['darah1'] = $this->db->query("SELECT SUM(IF(golongan_darah LIKE 'A', stok_darah, 0)) AS stoks FROM `ketersediaan_darah`")->row_array();
-		// $data['darah2'] = $this->db->query("SELECT SUM(IF(golongan_darah LIKE 'B', stok_darah, 0)) AS stoks FROM `ketersediaan_darah`")->row_array();
-		// $data['darah3'] = $this->db->query("SELECT SUM(IF(golongan_darah LIKE 'AB', stok_darah, 0)) AS stoks FROM `ketersediaan_darah`")->row_array();
-		// $data['darah4'] = $this->db->query("SELECT SUM(IF(golongan_darah LIKE 'O', stok_darah, 0)) AS stoks FROM `ketersediaan_darah`")->row_array();
+		// $data['darah1'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'A', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
+		// $data['darah2'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'B', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
+		// $data['darah3'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'AB', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
+		// $data['darah4'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'O', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
 
 
 		$data['tampil'] = $this->M_ketersediaan->getGroupData();

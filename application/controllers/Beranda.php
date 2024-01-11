@@ -30,6 +30,8 @@ class Beranda extends CI_Controller {
 		
 		$data['jumbotron'] = $this->M_jumbotron->getDataJumboId();
 
+		
+	
 
 		// script coutdown
 		$Datetime = $this->M_countdown->getTargetDatetimeCoutdown();

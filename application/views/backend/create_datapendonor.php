@@ -190,7 +190,7 @@
 										</div>
 										<div class="col-sm-4">
 											<label for="">Golongan Darah</label>
-											<select class="form-control" id="golongan_darah" name="golongan_darah" required>
+											<select class="form-control" id="golongan_darah_id" name="golongan_darah_id" required>
 												<option value="">- Pilih -</option>
 												<option value="A">A</option>
 												<option value="B">B</option>

@@ -13,14 +13,14 @@ class M_datapendonor extends CI_Model {
 
 	}
 
-	public function cari_data_pendonor($golongan_darah, $umur, $jenis_kelamin) {
+	public function cari_data_pendonor($golongan_darah_id, $umur, $jenis_kelamin) {
 
 		$this->db->select('*');
 		$this->db->from('user');
 		$this->db->where('user.umur', $umur);
 		$this->db->where('user.jenis_kelamin', $jenis_kelamin);
 		$this->db->join('form_pendonor', 'form_pendonor.user_id = user.id');
-		$this->db->where('form_pendonor.golongan_darah', $golongan_darah); 
+		$this->db->where('form_pendonor.golongan_darah_id', $golongan_darah_id); 
 		$query = $this->db->get();
 
 		return $query->result();

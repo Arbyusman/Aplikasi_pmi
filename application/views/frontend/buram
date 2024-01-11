@@ -1,12 +1,12 @@
 <?php if ($data->stok_darah <= 3) : ?>
 	<script>
 							                // tampillkan alert jika stok_darah kurang dari atau sama dengan 3
-							                alert('Perhatian: Stok darah tinggal sedikit untuk golongan darah <?= $data->golongan_darah; ?>!');
+							                alert('Perhatian: Stok Darah tinggal sedikit untuk golongan darah <?= $data->golongan_darah_id; ?>!');
 
 							                 // Buat link untuk mengirim pesan ke API WhatsApp
-							                 var golonganDarah = '<?= $data->golongan_darah; ?>';
+							                 var golonganDarah = '<?= $data->golongan_darah_id; ?>';
 										    var nomorWhatsapp = '6282290385302'; // Ganti dengan nomor WhatsApp yang sesuai
-										    var pesan = encodeURIComponent('Halo, Stok darah tinggal sedikit untuk golongan darah' + golonganDarah);
+										    var pesan = encodeURIComponent('Halo, Stok Darah tinggal sedikit untuk golongan darah' + golonganDarah);
 
 										    var linkWhatsapp = 'https://api.whatsapp.com/send?phone=' + nomorWhatsapp + '&text=' + pesan;
 
@@ -382,11 +382,11 @@
 								</div>
 								<div class="form-group">
 									<label>Golongan Darah</label>
-									<select class="form-control" name="golongan_darah" id="golongan_darah">
+									<select class="form-control" name="golongan_darah_id" id="golongan_darah_id">
 										<option value="">- Pilih -</option>
 										<?php foreach ($tampil as $data) : ?>
-											<option value="<?= $data->golongan_darah; ?>">
-												<?= $data->golongan_darah; ?>
+											<option value="<?= $data->golongan_darah_id; ?>">
+												<?= $data->golongan_darah_id; ?>
 											</option>
 										<?php endforeach; ?>
 									</select>

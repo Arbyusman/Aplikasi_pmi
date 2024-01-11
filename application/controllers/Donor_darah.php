@@ -70,7 +70,7 @@ class Donor_darah extends CI_Controller {
 
 		$user_id = $this->input->post('user_id');
 		$no_kartudonor = $this->input->post('no_kartudonor');
-		$golongan_darah = $this->input->post('golongan_darah');
+		$golongan_darah_id = $this->input->post('golongan_darah_id');
 		$bersedia_donor_puasa = $this->input->post('bersedia_donor_puasa');
 		$bersedia_donor_diluar_rutin = $this->input->post('bersedia_donor_diluar_rutin');
 		$donor_terakhir = $this->input->post('donor_terakhir');
@@ -90,7 +90,7 @@ class Donor_darah extends CI_Controller {
 			'no_kartudonor' => $no_kartudonor,
 			'alamat_kantor' => $alamat_kantor,
 			'no_telepon_kantor' => $no_telepon_kantor,
-			'golongan_darah' => $golongan_darah,
+			'golongan_darah_id' => $golongan_darah_id,
 			'bersedia_donor_puasa' => $bersedia_donor_puasa,
 			'bersedia_donor_diluar_rutin' => $bersedia_donor_diluar_rutin,
 			'donor_terakhir' => $donor_terakhir,

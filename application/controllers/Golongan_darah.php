@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Golongan_darah extends CI_Controller {
+class golongan_darah extends CI_Controller {
 
 
 
@@ -37,7 +37,7 @@ class Golongan_darah extends CI_Controller {
 		$prc = $this->input->post('prc');
 		$tc = $this->input->post('tc');
 		$belum_serologi = $this->input->post('belum_serologi');
-		$stok = $this->input->post('stok');
+		$stok_darah = $this->input->post('stok');
 
 		$data = array(
 
@@ -46,7 +46,7 @@ class Golongan_darah extends CI_Controller {
 			'prc' => $prc,
 			'tc' => $tc,
 			'belum_serologi' => $belum_serologi,
-			'stok' => $stok
+			'stok' => $stok_darah
 
 		);
 
@@ -79,7 +79,7 @@ class Golongan_darah extends CI_Controller {
 		$prc = $this->input->post('prc');
 		$tc = $this->input->post('tc');
 		$belum_serologi = $this->input->post('belum_serologi');
-		$stok = $this->input->post('stok');
+		$stok_darah = $this->input->post('stok_darah');
 
 		$data = array(
 			'nama_golongan' => $gol,
@@ -87,7 +87,7 @@ class Golongan_darah extends CI_Controller {
 			'prc' => $prc,
 			'tc' => $tc,
 			'belum_serologi' => $belum_serologi,
-			'stok' => $stok
+			'stok_darah' => $stok_darah
 		);
 
 		$update = $this->M_golongan->updateGol($data,$id);
@@ -105,5 +105,5 @@ class Golongan_darah extends CI_Controller {
 
 }
 
-/* End of file Golongan_darah.php */
-/* Location: ./application/controllers/Golongan_darah.php */
+/* End of file golongan_darah.php */
+/* Location: ./application/controllers/golongan_darah.php */
