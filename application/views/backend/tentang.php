@@ -37,7 +37,7 @@ include 'componen/header.php'
 
 						?>
 						<label>Profil</label>
-						<input type="hidden" name="id" value="<?= $data->id_tentang; ?>">
+						<input type="hidden" name="id" value="<?= $data->id; ?>">
 						<input type="text" class="form-control" name="profil" value="<?= $data->profil; ?>">
 						<label>Visi - Misi</label>
 						<textarea class="form-control" name="visimisi" id="editor" required><?= $data->visimisi; ?></textarea>

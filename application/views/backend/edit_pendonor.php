@@ -32,7 +32,7 @@ include 'componen/header.php'
 			<form method="POST" action="<?= base_url('Ketersediaan/aksiUpdateDon')?>">
 				<div class="form-group">
 					<label>No.Kartu Donor</label>
-					<input type="hidden" name="id" value="<?= $pendonor->id_pendonor;?>">
+					<input type="hidden" name="id" value="<?= $pendonor->id;?>">
 					<input type="text" class="form-control" name="no_kartudonor"  value="<?= $pendonor->no_kartudonor;?>" readonly>
 					<label>Alamat kantor</label>
 					<input type="text" class="form-control" name="alamat_kantor"  value="<?= $pendonor->alamat_kantor;?>">

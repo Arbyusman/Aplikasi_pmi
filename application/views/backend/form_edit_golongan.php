@@ -34,7 +34,7 @@ include 'componen/header.php'
 				<div class="form-group">
 					<div class="form-group">
 						<label for="">Golongan Darah</label>
-						<input type="hidden" name="id" value="<?= $tampil->id_gol; ?>">
+						<input type="hidden" name="id" value="<?= $tampil->id; ?>">
 						<input type="text" class="form-control"  name="gol_darah" value="<?= $tampil->nama_golongan; ?>">
 					</div> 
 					<div class="form-group">

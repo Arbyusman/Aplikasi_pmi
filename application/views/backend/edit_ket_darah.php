@@ -36,16 +36,16 @@ include 'componen/header.php'
 						<?php 
 						foreach ($jadwal as $data) {
 							?>
-							<option value="<?= $data->id_keg?>" <?= ($data->id_keg == $keterangan->jadwal_kegiatan) ? 'selected' : '' ?>><?= $data->instansi?></option>
+							<option value="<?= $data->id?>" <?= ($data->id == $keterangan->jadwal_kegiatan) ? 'selected' : '' ?>><?= $data->instansi?></option>
 						<?php } ?>
 					</select>
 					<label>Golongan Darah</label>
-					<input type="hidden" name="id" value="<?= $keterangan->id_ket; ?>">
+					<input type="hidden" name="id" value="<?= $keterangan->id; ?>">
 					<select class="form-control" name="golongan_darah" required>
 						<?php 
 						foreach ($golongan as $data) {
 							?>
-							<option value="<?= $data->id_gol?>" <?= ($data->id_gol == $keterangan->id_gol) ? 'selected' : '' ?>><?= $data->nama_golongan?></option>
+							<option value="<?= $data->id?>" <?= ($data->id == $keterangan->id) ? 'selected' : '' ?>><?= $data->nama_golongan?></option>
 						<?php } ?>
 					</select>
 					<!-- <label>Stok Darah</label>

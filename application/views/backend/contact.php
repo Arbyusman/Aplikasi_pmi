@@ -36,7 +36,7 @@ include 'componen/header.php'
 					foreach ($tampil as $data) {
 						?>
 						<label>Alamat</label>
-						<input type="hidden" name="id" value="<?= $data->id_kontak; ?>">
+						<input type="hidden" name="id" value="<?= $data->id; ?>">
 						<input type="text" class="form-control" name="alamat" value="<?= $data->alamat; ?>" required>
 						<label>No.Telephone</label>
 						<input type="text" class="form-control" name="telepone" value="<?= $data->telepon; ?>" required>

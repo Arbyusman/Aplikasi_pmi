@@ -83,7 +83,7 @@
 							<?php 
 							foreach ($jadwal as $data) {
 								?>
-								<option value="<?= $data->id_keg?>"><?= $data->instansi?></option>
+								<option value="<?= $data->id?>"><?= $data->instansi?></option>
 							<?php } ?>
 						</select>
 					</div> 
@@ -94,7 +94,7 @@
 							<?php 
 							foreach ($golongan as $data) {
 								?>
-								<option value="<?= $data->id_gol?>"><?= $data->nama_golongan?></option>
+								<option value="<?= $data->id?>"><?= $data->nama_golongan?></option>
 							<?php } ?>
 						</select>
 					</div> 

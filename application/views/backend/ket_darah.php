@@ -64,8 +64,8 @@
 								<td><?= $data->update_time; ?></td>
 								<td><?= $data->update_by; ?></td>
 								<td>
-									<a href="<?php echo base_url('ketersediaan/form_edit_ket/'). $data->id_ket ?>" class="btn btn-warning">Edit</a>
-									<a href="<?php echo base_url('ketersediaan/aksiHapusKet/'). $data->id_ket ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+									<a href="<?php echo base_url('ketersediaan/form_edit_ket/'). $data->id ?>" class="btn btn-warning">Edit</a>
+									<a href="<?php echo base_url('ketersediaan/aksiHapusKet/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
 								</td>
 							</tr>
 						<?php } ?>
@@ -96,7 +96,7 @@
 							<?php 
 							foreach ($jadwal as $data) {
 								?>
-								<option value="<?= $data->id_keg?>"><?= $data->instansi?></option>
+								<option value="<?= $data->id?>"><?= $data->instansi?></option>
 							<?php } ?>
 						</select>
 					</div> 
@@ -107,7 +107,7 @@
 							<?php 
 							foreach ($golongan as $data) {
 								?>
-								<option value="<?= $data->id_gol?>"><?= $data->nama_golongan?></option>
+								<option value="<?= $data->id?>"><?= $data->nama_golongan?></option>
 							<?php } ?>
 						</select>
 					</div> 
@@ -143,7 +143,7 @@
 			$.ajax({
 				url: '<?= base_url('Ketersediaan/getStokDarah'); ?>',
 				method: 'post',
-				data: { id_gol: selectedUserId },
+				data: { id: selectedUserId },
 				dataType: 'json',
 				success: function(response) {
 					console.log(response);

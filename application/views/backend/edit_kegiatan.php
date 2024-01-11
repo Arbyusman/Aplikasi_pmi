@@ -34,7 +34,7 @@ include 'componen/header.php'
 				<div class="form-group">
 					<div class="form-group">
 						<label for="">Waktu</label>
-						<input type="hidden" name="id" value="<?= $jadwal->id_keg; ?>">
+						<input type="hidden" name="id" value="<?= $jadwal->id; ?>">
 						<input type="datetime-local" class="form-control"  name="waktu" value="<?= $jadwal->waktu; ?>">
 					</div> 
 					<div class="form-group">

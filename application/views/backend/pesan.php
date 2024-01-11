@@ -57,7 +57,7 @@
 								<td><?= $data->email_pengirim; ?></td>
 								<td><?= $data->pesan_pengirim; ?></td>
 								<td>
-									<a href="<?php echo base_url('pesan/aksiHapusPesan/'). $data->id_pesan ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+									<a href="<?php echo base_url('pesan/aksiHapusPesan/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
 								</td>
 							</tr>
 

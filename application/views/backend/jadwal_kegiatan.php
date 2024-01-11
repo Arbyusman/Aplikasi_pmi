@@ -61,8 +61,8 @@
 								<td><?= $data->update_by; ?></td>
 								<td><?= $data->update_at; ?></td>
 								<td class="text-dark text-nowrap">
-									<a href="<?php echo base_url('jadwal/form_edit_jad/'). $data->id_keg ?>" class="btn btn-warning">Edit</a>
-									<a href="<?php echo base_url('jadwal/aksiHapusKeg/'). $data->id_keg ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+									<a href="<?php echo base_url('jadwal/form_edit_jad/'). $data->id ?>" class="btn btn-warning">Edit</a>
+									<a href="<?php echo base_url('jadwal/aksiHapusKeg/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
 								</td>
 							</tr>
 						<?php } ?>

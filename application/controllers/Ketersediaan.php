@@ -44,9 +44,9 @@ class Ketersediaan extends CI_Controller {
 
   public function getStokDarah() {
 
-    $id_gol = $this->input->post('golongan_darah');
+    $id = $this->input->post('golongan_darah');
 
-    $stok = $this->M_ketersediaan->get_StokDarah($id_gol);
+    $stok = $this->M_ketersediaan->get_StokDarah($id);
 
 
     var_dump($stok);exit();
@@ -340,7 +340,7 @@ class Ketersediaan extends CI_Controller {
 
       foreach ($tampilData as $row) {
 
-        $row->kegiatan = $this->M_ketersediaan->getDataKetersediaanDarah($row->id_keg);
+        $row->kegiatan = $this->M_ketersediaan->getDataKetersediaanDarah($row->id);
 
       }
 

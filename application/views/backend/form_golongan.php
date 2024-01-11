@@ -62,8 +62,8 @@
 								<td><?= $data->belum_serologi; ?></td>
 								<td><?= $data->stok; ?></td>
 								<td>
-									<a href="<?= base_url('golongan_darah/form_edit/').$data->id_gol; ?>" class="btn btn-warning">Edit</a>
-									<a href="<?= base_url('golongan_darah/aksiDeleteGol/').$data->id_gol; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+									<a href="<?= base_url('golongan_darah/form_edit/').$data->id; ?>" class="btn btn-warning">Edit</a>
+									<a href="<?= base_url('golongan_darah/aksiDeleteGol/').$data->id; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
 								</td>
 							</tr>
 						<?php } ?>
