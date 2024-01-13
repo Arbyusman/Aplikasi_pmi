@@ -120,6 +120,8 @@ class Ketersediaan extends CI_Controller
     redirect('Ketersediaan');
   }
 
+
+
   public function aksiHapusKet($id)
   {
 
@@ -332,16 +334,9 @@ class Ketersediaan extends CI_Controller
   {
 
 
-    $tampilData = $this->M_ketersediaan->Jadwal_kegitan_model();
-
-
-    foreach ($tampilData as $row) {
-
-      $row->kegiatan = $this->M_ketersediaan->getDataKetersediaanDarah($row->id);
-    }
+    $tampilData = $this->M_ketersediaan->getDataKetersediaan();
 
     $data = array('tampil' => $tampilData);
-
 
     // golongan
     $data['golongan'] = $this->M_golongan->getDataGolongan();
@@ -349,10 +344,55 @@ class Ketersediaan extends CI_Controller
     // jadwal
     $data['jadwal'] = $this->M_jadwal->getDataJadwal();
 
-
+    // title
     $data['title'] = 'PMI - Provinsi Sultra';
 
     $this->load->view('backend/halaman_baru', $data);
+  }
+
+  public function aksiUpdateKeteranganAjax()
+  {
+    try {
+      $ketersediaan_darah_id = intval($this->input->post('ketersediaan_darah_id'));
+      // $instansi = $this->input->post('instansi');
+      $golongan_darah_id = intval($this->input->post('golongan_darah_id'));
+      $stok_darah = intval($this->input->post('stok_darah'));
+
+
+      $wb = intval($this->input->post('wb'));
+      $prc = intval($this->input->post('prc'));
+      $tc = intval($this->input->post('tc'));
+      
+
+      $data = array(
+        'golongan_darah_id' => $golongan_darah_id,
+        'stok_darah' => $stok_darah,
+      );
+
+      $dataDarah = array(
+        'wb' => $wb,
+        'prc' => $prc,
+        'tc' => $tc,
+        'stok' => $stok_darah,
+      );
+
+      
+      $update = $this->M_ketersediaan->updateKeteranganAjax($data, $ketersediaan_darah_id);
+      
+      $updateDarah = $this->M_golongan->updateGol($dataDarah, $golongan_darah_id);
+     
+      if ($update && $updateDarah) {
+        $response = array('status' => 'success', 'message' => 'Data updated successfully');
+      } else {
+        $response = array('status' => 'error', 'message' => 'Failed to update data');
+      }
+
+      $this->output->set_content_type('application/json')->set_output(json_encode($response));
+    } catch (Exception $e) {
+      // Handle the exception
+      $response = array('status' => 'error', 'message' => 'An error occurred: ' . $e->getMessage());
+      $this->output->set_content_type('application/json')->set_output(json_encode($response));
+    }
   }
 }
 

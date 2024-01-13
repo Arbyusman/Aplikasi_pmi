@@ -30,7 +30,8 @@ class M_golongan extends CI_Model {
 	public function updateGol($data, $id)
 	{
 		$this->db->where('id', $id);
-		$this->db->update('gol_darah', $data);
+		$result = $this->db->update('gol_darah', $data);
+		return $result;
 	}
 
 	public function deleteGol($id)

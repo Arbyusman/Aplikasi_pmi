@@ -7,14 +7,21 @@ class M_ketersediaan extends CI_Model
 	public function getDataKetersediaan()
 	{
 
-		$this->db->select('*');
+		$this->db->select('*, ketersediaan_darah.id AS ketersediaan_darah_id,gol_darah.id AS gol_darah_id, jadwal_kegiatan.id AS jadwal_kegiatan_id');
 		$this->db->from('ketersediaan_darah');
 		$this->db->join('gol_darah', 'ketersediaan_darah.golongan_darah_id = gol_darah.id');
 		$this->db->join('jadwal_kegiatan', 'ketersediaan_darah.jadwal_kegiatan = jadwal_kegiatan.id');
 		$result = $this->db->get()->result();
 
-		// var_dump($result);
-		// die;
+
+		return $result;
+	}
+
+	public function updateKeteranganAjax($data, $id)
+	{
+		$this->db->where('id', $id);
+		$result = $this->db->update('ketersediaan_darah', $data);
+
 		return $result;
 	}
 
@@ -68,7 +75,7 @@ class M_ketersediaan extends CI_Model
 	public function inputKet($data)
 	{
 
-	
+
 		return $this->db->insert('ketersediaan_darah', $data);
 	}
 
@@ -102,6 +109,7 @@ class M_ketersediaan extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
 
 
 	public function updateKeter($data, $id)

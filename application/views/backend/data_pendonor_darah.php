@@ -64,7 +64,7 @@
 								<td><?= $data->jenis_kelamin; ?></td>
 								<td><?= $data->alamat_kantor; ?></td>
 								<td><?= $data->no_telepon_kantor; ?></td>
-								<td><?= $data->golongan_darah_id; ?></td>
+								<td><?= $data->golongan_darah; ?></td>
 								<td><?= $data->bersedia_donor_puasa; ?></td>
 								<td><?= $data->bersedia_donor_diluar_rutin; ?></td>
 								<td><?= $data->donor_terakhir; ?></td>
