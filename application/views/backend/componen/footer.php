@@ -183,23 +183,23 @@ aria-hidden="true">
         rows.each(function() {
             var stok_darahDarah = parseInt($(this).find("td:eq(2)").text()); // Mengambil nilai stok_darah dari kolom ke-3
 
-            if (stok_darahDarah === 3) {
-                // Menampilkan alert jika stok_darah kurang dari atau sama dengan 3
-                alert("Peringatan: Stok Darah tinggal " + stok_darahDarah + " kantong di golongan darah " + $(this).find("td:eq(1)").text());
+            // if (stok_darahDarah === 3) {
+            //     // Menampilkan alert jika stok_darah kurang dari atau sama dengan 3
+            //     alert("Peringatan: Stok Darah tinggal " + stok_darahDarah + " kantong di golongan darah " + $(this).find("td:eq(1)").text());
 
-                 // Tambahkan konfirmasi dialog
-                 var confirmNotif = confirm("Apakah Anda ingin mengirim notifikasi ke WhatsApp?");
+            //      // Tambahkan konfirmasi dialog
+            //      var confirmNotif = confirm("Apakah Anda ingin mengirim notifikasi ke WhatsApp?");
 
-                // Cek apakah pengguna menekan OK
-                if (confirmNotif) {
-                    // Redirect ke halaman tertentu setelah menutup alert
-                    window.location.href = "<?= base_url('data_user')?>";
-                } else {
-                    // Pengguna membatalkan, tambahkan logika tambahan atau hapus baris ini jika tidak diperlukan
-                    console.log("Pengguna membatalkan pengiriman notifikasi.");
-                }
+            //     // Cek apakah pengguna menekan OK
+            //     if (confirmNotif) {
+            //         // Redirect ke halaman tertentu setelah menutup alert
+            //         window.location.href = "<?= base_url('data_user')?>";
+            //     } else {
+            //         // Pengguna membatalkan, tambahkan logika tambahan atau hapus baris ini jika tidak diperlukan
+            //         console.log("Pengguna membatalkan pengiriman notifikasi.");
+            //     }
 
-            }
+            // }
         });
     });
 </script>

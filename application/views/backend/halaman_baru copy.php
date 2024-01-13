@@ -63,39 +63,16 @@
 								<form class="updateForm">
 									<td><?= $no++; ?></td>
 									<td><?= $data->instansi; ?></td>
-									<td>
-										<?php
-										foreach ($golongan as $itemGolongan) {
-											if ($itemGolongan->nama_golongan == $data->nama_golongan) {
-												echo '<input class="form-control b-0" value="' . $itemGolongan->nama_golongan . '" readonly/> <br>';
-											}
-										}
-										?>
-									</td>
-
+									<td><?= $data->nama_golongan; ?></td>
 									<!-- <td><?= $data->ketersediaan_darah_id; ?></td> -->
 									<td class="col-2">
-										<?php
-										foreach ($golongan as $itemGolongan) {
-											if ($itemGolongan->nama_golongan == $data->nama_golongan) {
-												echo '<input type="number" class="form-control b-0 wb" name="wb" id="wb' . $data->ketersediaan_darah_id . '" value="' . $data->wb . '"  /> <br>';
-											}
-										}
-										?>
+										<input type="number" class="form-control b-0 wb" name="wb" id="wb<?= $data->ketersediaan_darah_id ?>" value="<?= $data->wb; ?>" />
 									</td>
 									<td class="col-2">
-										<?php
-										foreach ($golongan as $itemGolongan) {
-											echo '<input type="number" class="form-control b-0 prc" name="prc" id="prc' . $data->ketersediaan_darah_id . '" value="' . $data->prc . '"  /> <br>';
-										}
-										?>
+										<input type="number" class="form-control b-0 prc" name="prc" id="prc<?= $data->ketersediaan_darah_id ?>" value="<?= $data->prc; ?>" />
 									</td>
 									<td class="col-2">
-										<?php
-										foreach ($golongan as $itemGolongan) {
-											echo '<input type="number" class="form-control b-0 tc" name="tc" id="tc' . $data->ketersediaan_darah_id . '" value="' . $data->tc . '"  /> <br>';
-										}
-										?>
+										<input type="number" class="form-control b-0 tc" name="tc" id="tc<?= $data->ketersediaan_darah_id ?>" value="<?= $data->tc; ?>" />
 									</td>
 									<td class="col-2">
 										<input type="number" class="form-control b-0" name="stok_darah" id="stok_darah_<?= $data->ketersediaan_darah_id ?>" value="<?= $data->stok; ?>" readonly />
@@ -161,6 +138,44 @@
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
+
+			var golonganData = data.golongan;
+			var jadwalData = data.jadwal;
+
+			var no = 1;
+
+			data.tampil.forEach(data => {
+            const view = `
+                <tr>
+                    <form class="updateForm">
+                        <td>${no++}</td>
+                        <td>${data.instansi}</td>
+                        <td>${data.nama_golongan}</td>
+                        <!-- <td>${data.ketersediaan_darah_id}</td> -->
+                        <td class="col-2">
+                            <input type="number" class="form-control b-0 wb" name="wb" id="wb${data.ketersediaan_darah_id}" value="${data.wb}" />
+                        </td>
+                        <td class="col-2">
+                            <input type="number" class="form-control b-0 prc" name="prc" id="prc${data.ketersediaan_darah_id}" value="${data.prc}" />
+                        </td>
+                        <td class="col-2">
+                            <input type="number" class="form-control b-0 tc" name="tc" id="tc${data.ketersediaan_darah_id}" value="${data.tc}" />
+                        </td>
+                        <td class="col-2">
+                            <input type="number" class="form-control b-0" name="stok_darah" id="stok_darah_${data.ketersediaan_darah_id}" value="${data.stok}" readonly />
+                        </td>
+                        <input type="hidden" name="ketersediaan_darah_id" value="${data.ketersediaan_darah_id}" />
+                        <input type="hidden" name="golongan_darah_id" value="${data.gol_darah_id}" />
+                        <input type="hidden" name="jadwal_kegiatan_id" value="${data.jadwal_kegiatan_id}" />
+                        <input type="hidden" name="instansi" value="${data.instansi}" />
+                    </form>
+                </tr>
+            `;
+
+            $('#body-data').append(view);
+        });
+
+
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			console.error("Error: " + errorThrown);

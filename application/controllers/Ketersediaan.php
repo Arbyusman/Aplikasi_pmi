@@ -333,7 +333,6 @@ class Ketersediaan extends CI_Controller
   public function gabungan()
   {
 
-
     $tampilData = $this->M_ketersediaan->getDataKetersediaan();
 
     $data = array('tampil' => $tampilData);
@@ -349,6 +348,44 @@ class Ketersediaan extends CI_Controller
 
     $this->load->view('backend/halaman_baru', $data);
   }
+  public function stok_darah()
+  {
+
+
+    // jadwal
+    $data['jadwal'] = $this->M_jadwal->getDataJadwal();
+
+    // title
+    $data['title'] = 'PMI - Provinsi Sultra';
+
+    $this->load->view('backend/stok_darah', $data);
+  }
+
+  public function create_stok_darah()
+  {
+    $jadwal_kegiatan_id = intval($this->input->post('jadwal_kegiatan_id'));
+
+
+    $this->load->view('backend/stok_darah', $data);
+  }
+
+  public function getDataGabunganAjax()
+  {
+
+    $tampilData = $this->M_ketersediaan->getDataKetersediaan();
+
+    $data = array('tampil' => $tampilData);
+
+    // golongan
+    $data['golongan'] = $this->M_golongan->getDataGolongan();
+
+    // jadwal
+    $data['jadwal'] = $this->M_jadwal->getDataJadwal();
+
+    // title
+
+    $this->output->set_content_type('application/json')->set_output(json_encode($data));
+  }
 
   public function aksiUpdateKeteranganAjax()
   {
@@ -362,7 +399,7 @@ class Ketersediaan extends CI_Controller
       $wb = intval($this->input->post('wb'));
       $prc = intval($this->input->post('prc'));
       $tc = intval($this->input->post('tc'));
-      
+
 
       $data = array(
         'golongan_darah_id' => $golongan_darah_id,
@@ -376,11 +413,11 @@ class Ketersediaan extends CI_Controller
         'stok' => $stok_darah,
       );
 
-      
+
       $update = $this->M_ketersediaan->updateKeteranganAjax($data, $ketersediaan_darah_id);
-      
+
       $updateDarah = $this->M_golongan->updateGol($dataDarah, $golongan_darah_id);
-     
+
       if ($update && $updateDarah) {
         $response = array('status' => 'success', 'message' => 'Data updated successfully');
       } else {
