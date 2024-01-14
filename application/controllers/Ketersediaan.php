@@ -11,6 +11,7 @@ class Ketersediaan extends CI_Controller
     $this->load->model('M_golongan');
     $this->load->model('front/M_datapendonor');
     $this->load->model('M_jadwal');
+    $this->load->model('M_darah');
     $this->load->helper('form');
     $this->load->library('form_validation');
 
@@ -333,13 +334,15 @@ class Ketersediaan extends CI_Controller
   public function gabungan()
   {
 
-    $tampilData = $this->M_ketersediaan->getDataKetersediaan();
+    // $data['data'] = $this->M_ketersediaan->getDataKetersediaan();
 
-    $data = array('tampil' => $tampilData);
+    // $data = array('tampil' => $tampilData);
 
     // golongan
-    $data['golongan'] = $this->M_golongan->getDataGolongan();
+    // $data['golongan'] = $this->M_golongan->getDataGolongan();
+    $data['darah'] = $this->M_darah->getDataDarah();
 
+    // var_dump($data);
     // jadwal
     $data['jadwal'] = $this->M_jadwal->getDataJadwal();
 
@@ -431,7 +434,47 @@ class Ketersediaan extends CI_Controller
       $this->output->set_content_type('application/json')->set_output(json_encode($response));
     }
   }
-}
 
+
+
+  public function aksiUpdateStokAjax()
+  {
+    try {
+      $darah_id = intval($this->input->post('darah_id'));
+      $jadwal_id = intval($this->input->post('jadwal_id'));
+      $prc = intval($this->input->post('prc'));
+      $wb = intval($this->input->post('wb'));
+      $tc = intval($this->input->post('tc'));
+
+    
+
+      $dataDarah = array(
+        'darah_id' => $darah_id,
+        'jadwal_id' => $jadwal_id,
+        'wb' => $wb,
+        'prc' => $prc,
+        'tc' => $tc,
+        'stok' => 0,
+      );
+
+
+
+      $updateDarah = $this->M_golongan->inputGol($dataDarah);
+      // $updateDarah = $this->M_golongan->updateGol($dataDarah, $golongan_darah_id);
+
+      if ($updateDarah) {
+        $response = array('status' => 'success', 'message' => 'Data updated successfully');
+      } else {
+        $response = array('status' => 'error', 'message' => 'Failed to update data');
+      }
+
+      $this->output->set_content_type('application/json')->set_output(json_encode($response));
+    } catch (Exception $e) {
+      // Handle the exception
+      $response = array('status' => 'error', 'message' => 'An error occurred: ' . $e->getMessage());
+      $this->output->set_content_type('application/json')->set_output(json_encode($response));
+    }
+  }
+}
   /* End of file Ketersediaan.php */
 /* Location: ./application/controllers/Ketersediaan.php */

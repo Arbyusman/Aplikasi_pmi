@@ -21,6 +21,38 @@
 		</div>
 	<?php endif; ?>
 
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<form method="POST" action="<?= base_url('Stok_darah/create_stok') ?>" class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label for="exampleInputEmail1">Pilih Tempat</label>
+					<select class="form-control" name="jadwal_kegiatan_id">
+						<?php
+						foreach ($jadwal as $itemJadwal) {
+							echo '
+							<option class="" value="' . $itemJadwal->id . '"> ' . $itemJadwal->instansi . ' </option>
+							';
+						}
+						?>
+					</select>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
@@ -29,7 +61,8 @@
 				<!-- Button trigger modal -->
 				<div style="float: right;">
 					<a href="<?= base_url('golongan_darah') ?>" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Golongan Darah</a>
-					<a href="<?= base_url('Ketersediaan') ?>" class="btn btn-warning mb-5"><i class="fas fa-plus"></i> Ketersediaan Darah</a>
+					<!-- <a href="<?= base_url('Ketersediaan') ?>" class="btn btn-warning mb-5"><i class="fas fa-plus"></i> Ketersediaan Darah</a> -->
+					<!-- <button type="button" class="btn btn-secondary mb-5" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-plus"></i> Ketersedian Darah </button> -->
 				</div>
 			</h6>
 
@@ -53,58 +86,66 @@
 
 						$totalstok_darah = 0;
 						$no = 1;
-						foreach ($tampil as $data) {
+						foreach ($jadwal as $jadwal_item) {
 
-							$golonganDarah = $data->golongan_darah_id;
-							$totalstok_darah += $data->stok_darah;
 
 						?>
 							<tr>
 								<form class="updateForm">
 									<td><?= $no++; ?></td>
-									<td><?= $data->instansi; ?></td>
+									<td>
+										<?= $jadwal_item->instansi; ?></td>
 									<td>
 										<?php
-										foreach ($golongan as $itemGolongan) {
-											if ($itemGolongan->nama_golongan == $data->nama_golongan) {
-												echo '<input class="form-control b-0" value="' . $itemGolongan->nama_golongan . '" readonly/> <br>';
-											}
+										foreach ($darah as $item_darah) {
+											// if ($item_darah->nama_golongan) {
+											echo '<input class="form-control b-0" data-darah-id=' . $item_darah->id . ' value="' . $item_darah->name . '" readonly/> <br>';
+											// }
 										}
 										?>
 									</td>
 
-									<!-- <td><?= $data->ketersediaan_darah_id; ?></td> -->
 									<td class="col-2">
 										<?php
-										foreach ($golongan as $itemGolongan) {
-											if ($itemGolongan->nama_golongan == $data->nama_golongan) {
-												echo '<input type="number" class="form-control b-0 wb" name="wb" id="wb' . $data->ketersediaan_darah_id . '" value="' . $data->wb . '"  /> <br>';
-											}
+										foreach ($darah as $item_darah) {
+											// if ($item_darah->jadwal_id == $jadwal_item->id) {
+											echo '<input type="number"  data-darah-wb-id=' . $item_darah->id . ' class="form-control b-0 wb" name="wb"   /> <br>';
+											// }
 										}
 										?>
 									</td>
 									<td class="col-2">
 										<?php
-										foreach ($golongan as $itemGolongan) {
-											echo '<input type="number" class="form-control b-0 prc" name="prc" id="prc' . $data->ketersediaan_darah_id . '" value="' . $data->prc . '"  /> <br>';
+										foreach ($darah as $item_darah) {
+											// if ($item_darah->jadwal_id == $jadwal_item->id) {
+											echo '<input type="number"  data-darah-prc-id=' . $item_darah->id . ' class="form-control b-0 prc" name="prc"   /> <br>';
+											// }
 										}
 										?>
 									</td>
 									<td class="col-2">
 										<?php
-										foreach ($golongan as $itemGolongan) {
-											echo '<input type="number" class="form-control b-0 tc" name="tc" id="tc' . $data->ketersediaan_darah_id . '" value="' . $data->tc . '"  /> <br>';
+										foreach ($darah as $item_darah) {
+											// if ($item_darah->jadwal_id == $jadwal_item->id) {
+											echo '<input type="number"  data-darah-tc-id=' . $item_darah->id . ' class="form-control b-0 tc" name="tc"   /> <br>';
+											// }
 										}
 										?>
 									</td>
-									<td class="col-2">
-										<input type="number" class="form-control b-0" name="stok_darah" id="stok_darah_<?= $data->ketersediaan_darah_id ?>" value="<?= $data->stok; ?>" readonly />
+									<!-- <td class="col-2">
+										<?php
+										$totalData = 0;
+										foreach ($golongan as $item_golongan) {
+											$totalData += $item_golongan->stok;
+											echo '<input type="number" class="form-control b-0 tc" name="tc"  value="' . $totalData . '"  /> <br>';
+										}
 
-									</td>
-									<input type="hidden" name="ketersediaan_darah_id" value="<?= $data->ketersediaan_darah_id ?>" />
-									<input type="hidden" name="golongan_darah_id" value="<?= $data->gol_darah_id; ?>" />
-									<input type="hidden" name="jadwal_kegiatan_id" value="<?= $data->jadwal_kegiatan_id ?>" />
-									<input type="hidden" name="instansi" value="<?= $data->instansi ?>" />
+										?>
+
+									</td> -->
+
+									<input type="hidden" name="jadwal_id" value="<?= $jadwal_item->id; ?>">
+
 								</form>
 							</tr>
 						<?php } ?>
@@ -128,21 +169,23 @@
 
 			var sum = wbValue + prcValue + tcValue;
 
-			var stokDarahId = row.find('input[name="ketersediaan_darah_id"]').val();
-			$('#stok_darah_' + stokDarahId).val(sum);
-		});
+			// Update the relevant stok_darah element
+			// var stokDarahId = row.find('input[name="ketersediaan_darah_id"]').val();
+			// $('#stok_darah_' + stokDarahId).val(sum);
 
-
-
-		$('.wb, .prc, .tc').on('keyup', function() {
+			// AJAX call to update data
 			$.ajax({
-				url: '<?= base_url('ketersediaan/aksiUpdateKeteranganAjax') ?>',
+				url: '<?= base_url('ketersediaan/aksiUpdateStokAjax') ?>',
 				type: 'POST',
-				data: $('.updateForm').serialize(),
+				data: {
+					darah_id: row.find('input[data-darah-id]').data('darah-id'),
+					wb: wbValue,
+					prc: prcValue,
+					tc: tcValue,
+				},
 				dataType: 'json',
 				success: function(response) {
 					console.log("success", response);
-
 				},
 				error: function(error) {
 					console.log(error);
@@ -152,20 +195,21 @@
 	});
 
 
-	const table = document.querySelector('#body-data');
 
-	//  Get data
-	$.ajax({
-		type: 'GET',
-		url: '<?= base_url('ketersediaan/getDataGabunganAjax') ?>',
-		dataType: 'json',
-		success: function(data) {
-			console.log(data);
-		},
-		error: function(xhr, textStatus, errorThrown) {
-			console.error("Error: " + errorThrown);
-		}
-	});
+	// const table = document.querySelector('#body-data');
+
+	// //  Get data
+	// $.ajax({
+	// 	type: 'GET',
+	// 	url: '<?= base_url('ketersediaan/getDataGabunganAjax') ?>',
+	// 	dataType: 'json',
+	// 	success: function(data) {
+	// 		console.log(data);
+	// 	},
+	// 	error: function(xhr, textStatus, errorThrown) {
+	// 		console.error("Error: " + errorThrown);
+	// 	}
+	// });
 </script>
 
 <?php include 'componen/footer.php' ?>

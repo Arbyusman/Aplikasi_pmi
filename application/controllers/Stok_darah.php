@@ -27,9 +27,9 @@ class Stok_darah extends CI_Controller
   public function index()
   {
     $data['stok'] = $this->M_stok->getDataStok();
-    
+
     $data['jumlah_jenis'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarah();
-    
+
     $data['darah'] = $this->M_darah->getDataDarah();
     $data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
     // var_dump($data);
@@ -51,51 +51,73 @@ class Stok_darah extends CI_Controller
     $this->load->view('backend/stok_darah', $data);
   }
 
+  // public function create_stok()
+  // {
+  //   $jenisDarah = $this->M_jenis_darah->getDataJenisDarah();
+  //   $darah = $this->M_darah->getDataDarah();
+  //   $jadwal_kegiatan_id = intval($this->input->post('jadwal_kegiatan_id'));
+
+  //   $dataInputStok = [
+  //     'jadwal_id' => $jadwal_kegiatan_id,
+  //     'total' => 0,
+  //   ];
+  //   $storeStok = $this->M_stok->createStok($dataInputStok);
+
+
+  //   foreach ($darah as $darahItem) {
+  //     foreach ($jenisDarah as $jenisDarahItem) {
+  //       $dataJumlahDarah = [
+  //         'jenis_darah_id' => $jenisDarahItem->id,
+  //         'darah_id' => $darahItem->id,
+  //         'jadwal_id' => $jadwal_kegiatan_id,
+  //         'stok_darah_id' => intval($storeStok->id),
+  //         'total' => 3,
+  //       ];
+  //       $this->M_jumlah_darah_jenis->createJumlahJenisDarah($dataJumlahDarah);
+  //     }
+  //   }
+
+  //   $jumlahJenisDarahByJadwal = $this->M_jumlah_darah_jenis->getJumlahJenisDarahByJadwal(intval($jadwal_kegiatan_id));
+
+
+  //   $total = 0;
+  //   foreach ($jumlahJenisDarahByJadwal as $jumlahJenisDarahByJadwalItem) {
+  //     $total += $jumlahJenisDarahByJadwalItem->total;
+  //   }
+
+
+  //   $dataInputStok = [
+  //     'jadwal_id' => $jadwal_kegiatan_id,
+  //     'total' => $total,
+  //   ];
+  //   $updateStok = $this->M_stok->updateStok($dataInputStok, intval($storeStok->id));
+
+  //   // title
+  //   $data['title'] = 'PMI - Provinsi Sultra';
+
+  //   redirect(base_url('Stok_darah'));
+  // }
+
   public function create_stok()
   {
-    $jenisDarah = $this->M_jenis_darah->getDataJenisDarah();
-    $darah = $this->M_darah->getDataDarah();
-    $jadwal_kegiatan_id = intval($this->input->post('jadwal_kegiatan_id'));
 
-    $dataInputStok = [
-      'jadwal_id' => $jadwal_kegiatan_id,
-      'total' => 0,
-    ];
-    $storeStok = $this->M_stok->createStok($dataInputStok);
-
-
-    foreach ($darah as $darahItem) {
-      foreach ($jenisDarah as $jenisDarahItem) {
-        $dataJumlahDarah = [
-          'jenis_darah_id' => $jenisDarahItem->id,
-          'darah_id' => $darahItem->id,
-          'jadwal_id' => $jadwal_kegiatan_id,
-          'stok_darah_id' => intval($storeStok->id),
-          'total' => 3,
-        ];
-        $this->M_jumlah_darah_jenis->createJumlahJenisDarah($dataJumlahDarah);
-      }
-    }
-
-    $jumlahJenisDarahByJadwal = $this->M_jumlah_darah_jenis->getJumlahJenisDarahByJadwal(intval($jadwal_kegiatan_id));
-
-
-    $total = 0;
-    foreach ($jumlahJenisDarahByJadwal as $jumlahJenisDarahByJadwalItem) {
-      $total += $jumlahJenisDarahByJadwalItem->total;
-    }
-
-
-    $dataInputStok = [
-      'jadwal_id' => $jadwal_kegiatan_id,
-      'total' => $total,
-    ];
-    $updateStok = $this->M_stok->updateStok($dataInputStok, intval($storeStok->id));
-
-    // title
     $data['title'] = 'PMI - Provinsi Sultra';
 
-    redirect(base_url('Stok_darah'));
+    $jadwal_id = $this->input->post('jadwal_kegiatan_id');
+
+
+    $jenisDarah = $this->M_darah->getDataDarah();
+
+    foreach ($jenisDarah as $jenisDarahItem) {
+      $data = array(
+        'jadwal_id' => intval($jadwal_id),
+        'nama_golongan' => $jenisDarahItem->name,
+      );
+      $save = $this->M_golongan->inputGol($data);
+    }
+
+    $this->session->set_flashdata('flash', 'Disimpan');
+    redirect(base_url('ketersediaan/gabungan'));
   }
 
 

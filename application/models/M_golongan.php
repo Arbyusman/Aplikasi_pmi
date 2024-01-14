@@ -1,21 +1,33 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_golongan extends CI_Model {
+class M_golongan extends CI_Model
+{
 
 
-	public function getDataGolongan() {
-		$this->db->select('*');
+	public function getDataGolongan()
+	{
+		$this->db->select('*, gol_darah.id as gol_darah_id, jadwal_kegiatan.id as jadwal_kegiatan_id');
+		$this->db->from('gol_darah');
+		$this->db->join('jadwal_kegiatan', 'gol_darah.jadwal_id = jadwal_kegiatan.id');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getDataInput($jadwal_id, $darah_id)
+	{
+		$this->db->where('darah_id', $darah_id);
+		$this->db->where('jadwal_id', $jadwal_id);
 		$this->db->from('gol_darah');
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-	
-	public function inputGol($data) {
+
+	public function inputGol($data)
+	{
 
 		return $this->db->insert('gol_darah', $data);
-
 	}
 
 
@@ -39,9 +51,6 @@ class M_golongan extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete('gol_darah');
 	}
-
-
-
 }
 
 /* End of file M_golongan.php */
