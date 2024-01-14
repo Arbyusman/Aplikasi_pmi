@@ -27,6 +27,13 @@ class Stok_darah extends CI_Controller
   public function index()
   {
     $data['stok'] = $this->M_stok->getDataStok();
+    
+    $data['jumlah_jenis'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarah();
+    
+    $data['darah'] = $this->M_darah->getDataDarah();
+    $data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
+    // var_dump($data);
+    // die;
 
     // jadwal
     $data['jadwal'] = $this->M_jadwal->getDataJadwal();
@@ -50,34 +57,40 @@ class Stok_darah extends CI_Controller
     $darah = $this->M_darah->getDataDarah();
     $jadwal_kegiatan_id = intval($this->input->post('jadwal_kegiatan_id'));
 
+    $dataInputStok = [
+      'jadwal_id' => $jadwal_kegiatan_id,
+      'total' => 0,
+    ];
+    $storeStok = $this->M_stok->createStok($dataInputStok);
+
+
     foreach ($darah as $darahItem) {
       foreach ($jenisDarah as $jenisDarahItem) {
         $dataJumlahDarah = [
           'jenis_darah_id' => $jenisDarahItem->id,
           'darah_id' => $darahItem->id,
           'jadwal_id' => $jadwal_kegiatan_id,
+          'stok_darah_id' => intval($storeStok->id),
           'total' => 3,
         ];
         $this->M_jumlah_darah_jenis->createJumlahJenisDarah($dataJumlahDarah);
       }
     }
 
-    $jumlahJenisDarahByJadwal = $this->M_jumlah_darah_jenis->getJumlahJenisDarahByJadwal($jadwal_kegiatan_id);
+    $jumlahJenisDarahByJadwal = $this->M_jumlah_darah_jenis->getJumlahJenisDarahByJadwal(intval($jadwal_kegiatan_id));
+
 
     $total = 0;
     foreach ($jumlahJenisDarahByJadwal as $jumlahJenisDarahByJadwalItem) {
-      var_dump($jumlahJenisDarahByJadwalItem);
       $total += $jumlahJenisDarahByJadwalItem->total;
     }
 
+
     $dataInputStok = [
-      'jenis_darah_id' => 1, // Assuming you have a specific jenis_darah_id here
-      'darah_id' => 1, // Assuming you have a specific darah_id here
       'jadwal_id' => $jadwal_kegiatan_id,
       'total' => $total,
     ];
-
-    $this->M_stok->createStok($dataInputStok);
+    $updateStok = $this->M_stok->updateStok($dataInputStok, intval($storeStok->id));
 
     // title
     $data['title'] = 'PMI - Provinsi Sultra';

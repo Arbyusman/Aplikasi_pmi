@@ -80,24 +80,45 @@
 						</tr>
 					</thead>
 					<tbody id="body-data">
-
 						<?php
 						$no = 1;
-						foreach ($stok as $stokItem) {
+						foreach ($stok as $stok_item) {
 						?>
 							<tr>
-
 								<td><?= $no++; ?></td>
-								<td><?= $stokItem->instansi; ?></td>
-								<td><?= $stokItem->darah_name; ?></td>
-								<td><?= $stokItem->total; ?></td>
+								<td><?= $stok_item->instansi; ?></td>
+								<td>
+									<?php
+									$totalByJenis = 0;
+									foreach ($darah as $darah_item) {
+										foreach ($jumlah_jenis as $jumlah_jenis_item) {
+											if ($darah_item->id == $jumlah_jenis_item->darah_id) {
+												$totalByJenis += $jumlah_jenis_item->total;
+											}
+										}
+										if ($totalByJenis > 0) {
+									?>
+											<span><?= $darah_item->name ?> <?= $totalByJenis ?></span>
+											<hr>
+											<br>
+									<?php
+										}
+									}
+									?>
+								</td>
+
+
+								<td><?= $stok_item->total; ?></td>
 								<td>
 									<a href="" class="btn btn-secondary">Detail</a>
 									<a href="" class="btn btn-danger">Hapus</a>
 								</td>
 							</tr>
-						<?php } ?>
+						<?php
+						}
+						?>
 					</tbody>
+
 				</table>
 			</div>
 		</div>
