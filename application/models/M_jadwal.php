@@ -10,6 +10,14 @@ class M_jadwal extends CI_Model {
 		return $query->result();
 	}
 
+	public function getDataJadwalById($id) {
+		$this->db->where('id', $id); // Add the condition to filter by id
+		$this->db->from('jadwal_kegiatan');
+		$query = $this->db->get();
+		
+		return $query->row();
+	}
+	
 
 	public function getDataJadwal3()
 	{

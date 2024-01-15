@@ -5,6 +5,17 @@ class M_golongan extends CI_Model
 {
 
 
+	public function getDataGolonganById($jadwal_id, $darah_id)
+	{
+		$this->db->where('jadwal_id', $jadwal_id);
+		$this->db->where('darah_id', $darah_id);
+		$this->db->select('*, gol_darah.id as gol_darah_id, jadwal_kegiatan.id as jadwal_kegiatan_id');
+		$this->db->from('gol_darah');
+		$this->db->join('jadwal_kegiatan', 'gol_darah.jadwal_id = jadwal_kegiatan.id');
+		$query = $this->db->get();
+
+		return $query->row();
+	}
 	public function getDataGolongan()
 	{
 		$this->db->select('*, gol_darah.id as gol_darah_id, jadwal_kegiatan.id as jadwal_kegiatan_id');
@@ -27,7 +38,8 @@ class M_golongan extends CI_Model
 	public function inputGol($data)
 	{
 
-		return $this->db->insert('gol_darah', $data);
+		$result = $this->db->insert('gol_darah', $data);
+		return $result;
 	}
 
 
@@ -39,11 +51,10 @@ class M_golongan extends CI_Model
 	}
 
 
-	public function updateGol($data, $id)
+	public function updateGol($dataInput, $jadwal_id)
 	{
-		$this->db->where('id', $id);
-		$result = $this->db->update('gol_darah', $data);
-		return $result;
+		$this->db->where('jadwal_id', $jadwal_id);
+		return $this->db->update('gol_darah', $dataInput);
 	}
 
 	public function deleteGol($id)

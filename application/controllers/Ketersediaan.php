@@ -12,6 +12,8 @@ class Ketersediaan extends CI_Controller
     $this->load->model('front/M_datapendonor');
     $this->load->model('M_jadwal');
     $this->load->model('M_darah');
+    $this->load->model('M_jenis_darah');
+    $this->load->model('M_jumlah_darah_jenis');
     $this->load->helper('form');
     $this->load->library('form_validation');
 
@@ -364,13 +366,60 @@ class Ketersediaan extends CI_Controller
     $this->load->view('backend/stok_darah', $data);
   }
 
+
+  public function stok_darah_detail($id)
+  {
+
+    // jadwal
+    // $data['semua'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarah(intval($id));
+    $data['darah'] = $this->M_darah->getDataDarah();
+    $data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
+    // $data['data'] = $this->M_golongan->getDataGolongan();
+    $data['jadwal'] = $this->M_jadwal->getDataJadwalById(intval($id));
+    
+    $data['stok'] = $this->M_jumlah_darah_jenis->getJumlahJenisDarahCount($id);
+    
+    $data['data'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarah(intval($id));
+    
+    // var_dump($data['data']);
+    // title
+    $data['title'] = 'PMI - Provinsi Sultra';
+
+    $this->load->view('backend/stok_detail.php', $data);
+  }
+
   public function create_stok_darah()
   {
-    $jadwal_kegiatan_id = intval($this->input->post('jadwal_kegiatan_id'));
+    $jadwal_id = intval($this->input->post('jadwal_id'));
+    $darah_id = intval($this->input->post('darah_id'));
+    $jenis_darah_id = $this->input->post('jenis_darah_id');
+    $value = intval($this->input->post('value'));
+
+    $result = $this->M_jumlah_darah_jenis->getJumlahJenisDarah($jadwal_id, $darah_id, $jenis_darah_id);
 
 
-    $this->load->view('backend/stok_darah', $data);
+    $dataInput = [
+      'jadwal_id' => intval($jadwal_id),
+      'darah_id' => intval($darah_id),
+      'jenis_darah_id' => intval($jenis_darah_id),
+      'total' => floatval($value),
+    ];
+    $dataUpdate = [
+      'total' => floatval($value),
+    ];
+    if ($result === null) {
+      $createStok = $this->M_jumlah_darah_jenis->createJumlahJenisDarah($dataInput);
+      $response = ['status' => 'success', 'message' => 'Stok Darah created successfully'];
+    } else {
+      $updateStok = $this->M_jumlah_darah_jenis->updateJumlahJenisDarah($dataUpdate, $jadwal_id, $darah_id, $jenis_darah_id);
+      $response = ['status' => 'success', 'message' => 'Stok Darah updated successfully'];
+    }
+
+    $this->output->set_content_type('application/json')->set_output(json_encode($response));
   }
+
+
+
 
   public function getDataGabunganAjax()
   {
@@ -446,7 +495,7 @@ class Ketersediaan extends CI_Controller
       $wb = intval($this->input->post('wb'));
       $tc = intval($this->input->post('tc'));
 
-    
+
 
       $dataDarah = array(
         'darah_id' => $darah_id,

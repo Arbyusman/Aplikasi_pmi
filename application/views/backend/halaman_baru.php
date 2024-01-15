@@ -74,11 +74,8 @@
 						<tr>
 							<th width="2px">No.</th>
 							<th>Instansi / UPTD</th>
-							<th>Golongan Darah</th>
-							<th>WH</th>
-							<th>PRC</th>
-							<th>TC</th>
 							<th>Stok</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody id="body-data">
@@ -95,43 +92,7 @@
 									<td><?= $no++; ?></td>
 									<td>
 										<?= $jadwal_item->instansi; ?></td>
-									<td>
-										<?php
-										foreach ($darah as $item_darah) {
-											// if ($item_darah->nama_golongan) {
-											echo '<input class="form-control b-0" data-darah-id=' . $item_darah->id . ' value="' . $item_darah->name . '" readonly/> <br>';
-											// }
-										}
-										?>
-									</td>
 
-									<td class="col-2">
-										<?php
-										foreach ($darah as $item_darah) {
-											// if ($item_darah->jadwal_id == $jadwal_item->id) {
-											echo '<input type="number"  data-darah-wb-id=' . $item_darah->id . ' class="form-control b-0 wb" name="wb"   /> <br>';
-											// }
-										}
-										?>
-									</td>
-									<td class="col-2">
-										<?php
-										foreach ($darah as $item_darah) {
-											// if ($item_darah->jadwal_id == $jadwal_item->id) {
-											echo '<input type="number"  data-darah-prc-id=' . $item_darah->id . ' class="form-control b-0 prc" name="prc"   /> <br>';
-											// }
-										}
-										?>
-									</td>
-									<td class="col-2">
-										<?php
-										foreach ($darah as $item_darah) {
-											// if ($item_darah->jadwal_id == $jadwal_item->id) {
-											echo '<input type="number"  data-darah-tc-id=' . $item_darah->id . ' class="form-control b-0 tc" name="tc"   /> <br>';
-											// }
-										}
-										?>
-									</td>
 									<!-- <td class="col-2">
 										<?php
 										$totalData = 0;
@@ -143,6 +104,12 @@
 										?>
 
 									</td> -->
+									<td></td>
+									<td>
+										<a href="<?= base_url('ketersediaan/stok_darah_detail/' . $jadwal_item->id) ?>">
+											Detail
+										</a>
+									</td>
 
 									<input type="hidden" name="jadwal_id" value="<?= $jadwal_item->id; ?>">
 
