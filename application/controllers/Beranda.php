@@ -16,6 +16,10 @@ class Beranda extends CI_Controller {
 		$this->load->model('M_countdown');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('M_jadwal');
+		$this->load->model('M_darah');
+		$this->load->model('M_jenis_darah');
+		$this->load->model('M_jumlah_darah_jenis');
 	}
 
 	public function index()
@@ -44,6 +48,10 @@ class Beranda extends CI_Controller {
 
 		$targetket = $isiket->ket;
 
+		$data['darah'] = $this->M_darah->getDataDarah();
+		$data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
+		$data['data_darah'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarahAll();
+		$data['stok'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarahAll();
 
         // parsing data
 		$data['targetDatetime'] = $targetDatetime;

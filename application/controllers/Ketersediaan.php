@@ -343,6 +343,8 @@ class Ketersediaan extends CI_Controller
     // golongan
     // $data['golongan'] = $this->M_golongan->getDataGolongan();
     $data['darah'] = $this->M_darah->getDataDarah();
+    $data['data'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarahAll();
+    
 
     // var_dump($data);
     // jadwal
@@ -366,6 +368,13 @@ class Ketersediaan extends CI_Controller
     $this->load->view('backend/stok_darah', $data);
   }
 
+
+  public function stok_jadwal($id)
+  {
+
+    $data = $this->M_jumlah_darah_jenis->getJumlahJenisDarahCount($id);
+    $this->output->set_content_type('application/json')->set_output(json_encode($data));
+  }
 
   public function stok_darah_detail($id)
   {

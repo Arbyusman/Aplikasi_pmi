@@ -75,7 +75,7 @@
 							<th width="2px">No.</th>
 							<th>Instansi / UPTD</th>
 							<th>Stok</th>
-							<th>Aksi</th>
+							<th width="150px">Aksi</th>
 						</tr>
 					</thead>
 					<tbody id="body-data">
@@ -93,20 +93,12 @@
 									<td>
 										<?= $jadwal_item->instansi; ?></td>
 
-									<!-- <td class="col-2">
-										<?php
-										$totalData = 0;
-										foreach ($golongan as $item_golongan) {
-											$totalData += $item_golongan->stok;
-											echo '<input type="number" class="form-control b-0 tc" name="tc"  value="' . $totalData . '"  /> <br>';
-										}
+									<td class="col-2">
+										<input type="text" class="total form-control" data-jadwal-id="<?= $jadwal_item->id; ?>" disabled/>
 
-										?>
-
-									</td> -->
-									<td></td>
-									<td>
-										<a href="<?= base_url('ketersediaan/stok_darah_detail/' . $jadwal_item->id) ?>">
+									</td>
+									<td >
+										<a class="btn btn-primary" href=" <?= base_url('ketersediaan/stok_darah_detail/' . $jadwal_item->id) ?>">
 											Detail
 										</a>
 									</td>
@@ -128,55 +120,33 @@
 
 <script>
 	$(document).ready(function() {
-		$('.wb, .prc, .tc').on('keyup', function() {
-			var row = $(this).closest('tr'); // Get the closest row
-			var wbValue = parseInt(row.find('input[name="wb"]').val()) || 0;
-			var prcValue = parseInt(row.find('input[name="prc"]').val()) || 0;
-			var tcValue = parseInt(row.find('input[name="tc"]').val()) || 0;
+		$('.total').each(function() {
+			var inputElement = $(this);
 
-			var sum = wbValue + prcValue + tcValue;
-
-			// Update the relevant stok_darah element
-			// var stokDarahId = row.find('input[name="ketersediaan_darah_id"]').val();
-			// $('#stok_darah_' + stokDarahId).val(sum);
-
-			// AJAX call to update data
+			var jadwalId = inputElement.data('jadwal-id');
+			console.log("jadwal_id", jadwalId)
 			$.ajax({
-				url: '<?= base_url('ketersediaan/aksiUpdateStokAjax') ?>',
-				type: 'POST',
-				data: {
-					darah_id: row.find('input[data-darah-id]').data('darah-id'),
-					wb: wbValue,
-					prc: prcValue,
-					tc: tcValue,
-				},
+				url: '<?= base_url('ketersediaan/stok_jadwal/') ?>' + jadwalId,
+				type: 'GET',
 				dataType: 'json',
 				success: function(response) {
-					console.log("success", response);
+					console.log(response)
+					var stokValue = response.total;
+					if (stokValue != null) {
+						inputElement.val(stokValue); // Use the stored reference
+					} else {
+						inputElement.val(0); // Use the stored reference
+
+					}
 				},
 				error: function(error) {
-					console.log(error);
+					inputElement.val(0); // Use the stored reference
+					console.log('AJAX error:', error);
 				}
 			});
 		});
 	});
-
-
-
-	// const table = document.querySelector('#body-data');
-
-	// //  Get data
-	// $.ajax({
-	// 	type: 'GET',
-	// 	url: '<?= base_url('ketersediaan/getDataGabunganAjax') ?>',
-	// 	dataType: 'json',
-	// 	success: function(data) {
-	// 		console.log(data);
-	// 	},
-	// 	error: function(xhr, textStatus, errorThrown) {
-	// 		console.error("Error: " + errorThrown);
-	// 	}
-	// });
 </script>
+
 
 <?php include 'componen/footer.php' ?>

@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 
-include'componens/header.php'; 
+include 'componens/header.php';
 
 ?>
 
@@ -17,7 +17,7 @@ include'componens/header.php';
 		border: 2px solid white;
 		padding: 10px;
 		border-radius: 8px;
-		height: 100%; 
+		height: 100%;
 	}
 
 	.panel_tgl {
@@ -205,7 +205,7 @@ include'componens/header.php';
 	}
 
 
-	.media-heading{
+	.media-heading {
 
 		margin-left: none;
 	}
@@ -219,23 +219,24 @@ include'componens/header.php';
 
 	.countd-dd {
 		display: inline-block;
-		margin-right: 5px; /* Sesuaikan jarak kanan sesuai kebutuhan Anda */
+		margin-right: 5px;
+		/* Sesuaikan jarak kanan sesuai kebutuhan Anda */
 	}
 
 
-	.tt-label{
+	.tt-label {
 		color: white;
 	}
 
-	.countd-t-hh{
+	.countd-t-hh {
 		color: white;
 	}
 
-	.countd-t-mm{
+	.countd-t-mm {
 		color: white;
 	}
 
-	.countd-t-ss{
+	.countd-t-ss {
 		color: white;
 	}
 
@@ -273,53 +274,51 @@ include'componens/header.php';
 		text-align: center;
 		font-family: Arial, sans-serif;
 	}
-
-
 </style>
 
 
 
 <!-- ======= Hero Section ======= -->
-<section  class="d-flex flex-column justify-content-center align-items-center">
+<section class="d-flex flex-column justify-content-center align-items-center">
 	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 1262px;">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="<?= base_url('template_front/lumia/assets/img/slide-1.jpeg')?>" class="d-block w-100" height="490" alt="">
+				<img src="<?= base_url('template_front/lumia/assets/img/slide-1.jpeg') ?>" class="d-block w-100" height="490" alt="">
 				<div class="carousel-caption d-none d-md-block">
-					<?php 
+					<?php
 					foreach ($jumbotron as $data) {
-						?>
+					?>
 						<h1><?= $data->isian_1; ?></h1>
 						<h2><?= $data->isian_2; ?></h2>
 					<?php } ?>
-					<a href="<?= base_url('Auth_login')?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
-					<a href="<?= base_url('Register')?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
+					<a href="<?= base_url('Auth_login') ?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
+					<a href="<?= base_url('Register') ?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="<?= base_url('template_front/lumia/assets/img/slide-2.jpg')?>" class="d-block w-100" height="490" alt="">
+				<img src="<?= base_url('template_front/lumia/assets/img/slide-2.jpg') ?>" class="d-block w-100" height="490" alt="">
 				<div class="carousel-caption d-none d-md-block">
-					<?php 
+					<?php
 					foreach ($jumbotron as $data) {
-						?>
+					?>
 						<h1><?= $data->isian_1; ?></h1>
 						<h2><?= $data->isian_2; ?></h2>
 					<?php } ?>
-					<a href="<?= base_url('Auth_login')?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
-					<a href="<?= base_url('Register')?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
+					<a href="<?= base_url('Auth_login') ?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
+					<a href="<?= base_url('Register') ?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="<?= base_url('template_front/lumia/assets/img/slide-3.jpg')?>" class="d-block w-100" height="490" alt="">
+				<img src="<?= base_url('template_front/lumia/assets/img/slide-3.jpg') ?>" class="d-block w-100" height="490" alt="">
 				<div class="carousel-caption d-none d-md-block">
-					<?php 
+					<?php
 					foreach ($jumbotron as $data) {
-						?>
+					?>
 						<h1><?= $data->isian_1; ?></h1>
 						<h2><?= $data->isian_2; ?></h2>
 					<?php } ?>
-					<a href="<?= base_url('Auth_login')?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
-					<a href="<?= base_url('register')?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
+					<a href="<?= base_url('Auth_login') ?>" class="btn btn-primary scrollto"><i class="fas fa-sign-in-alt"></i> Login</a>
+					<a href="<?= base_url('register') ?>" class="btn btn-success scrollto"><i class="fas fa-users"></i> Daftar</a>
 				</div>
 			</div>
 		</div>
@@ -341,30 +340,65 @@ include'componens/header.php';
 		<div class="container fixed-element">
 			<div class="pr-10">
 				<h2 style="color: black;">Data Ketersediaan Darah</h2>
-				<p>Update Terakhir : <?= date('d-m-Y H:i:s');?> </p>
+				<p>Update Terakhir : <?= date('d-m-Y H:i:s'); ?> </p>
 			</div>
 
 			<div class="row fixed-element">
-				<?php 
-				foreach ($tampil as $data) {
-					 // Tentukan kelas warna latar belakang berdasarkan nilai stok_darah
-					$warna_latar = ($data->stok_darah > 9) ? 'hijau' : 'merah';
-					?>
+				<?php
+				foreach ($darah as $darah_item) {
+
+					$totalStok = 0;
+					foreach ($stok as $stok_item) {
+
+						if ($darah_item->id == $stok_item->darah_id) {
+							$totalStok += $stok_item->total;
+						}
+					}
+					$warna_latar = ($totalStok > 9) ? 'hijau' : 'merah';
+				?>
 
 					<div class="col-lg-3 col-md-6 align-items-stretch">
 						<div class="icon-box <?= $warna_latar; ?>">
 							<div class="icon">
 								<i class="fas fa-hospital"></i>
 							</div>
-							<h4 class="fixed-element">Golongan Darah (<?= $data->nama_golongan; ?>)</h4>
+							<h4 class="fixed-element">Golongan Darah (<?php echo $darah_item->name; ?>)</h4>
 
 							<div class="data-box fixed-element">
-								<p>WB: <?= $data->wb; ?></p>
-								<p>PRC: <?= $data->prc; ?></p>
-								<p>TC: <?= $data->tc; ?></p>
+
+								<?php
+								foreach ($jenis_darah as $jenis_darah_item) {
+									$totalByJenis = 0;
+								
+									foreach ($data_darah as $data__darah_item) {
+
+										if ($darah_item->id == $data__darah_item->darah_id && $data__darah_item->jenis_darah_id == $jenis_darah_item->id) {
+											$totalByJenis += $data__darah_item->total;
+										}
+									}
+								?>
+									<!-- <?php
+									$allowedNames = ['PRC', 'TC', 'WB'];
+
+									if (in_array($jenis_darah_item->name, $allowedNames)) {
+									?>
+										<p><?= $jenis_darah_item->name ?> <?= $totalByJenis ?></p>
+									<?php
+									}
+									?> -->
+									 	<p><?= $jenis_darah_item->name ?> <?= $totalByJenis ?></p>
+
+								<?php
+								} ?> 
 							</div>
 							<br>
-							<h5 style="color: white;">Stok Darah : <?= $data->stok_darah; ?> </h5>
+							<h5 style="color: white;">Stok Darah :
+
+
+								<span class="hr">
+									<?php echo $totalStok; ?>
+								</span>
+							</h5>
 						</div>
 					</div>
 				<?php } ?>
@@ -384,11 +418,11 @@ include'componens/header.php';
 		<br>
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 		<!-- Custom Files -->
-		<link type="text/css" rel="stylesheet" href="<?= base_url('template_front/counter/')?>src/css/particles.css">
-		<link type="text/css" rel="stylesheet" href="<?= base_url('template_front/counter/')?>src/css/main.css?v=0.04">
-		<script type="text/javascript" src="<?= base_url('template_front/counter/')?>src/js/countdown.js?v=0.04"></script>
+		<link type="text/css" rel="stylesheet" href="<?= base_url('template_front/counter/') ?>src/css/particles.css">
+		<link type="text/css" rel="stylesheet" href="<?= base_url('template_front/counter/') ?>src/css/main.css?v=0.04">
+		<script type="text/javascript" src="<?= base_url('template_front/counter/') ?>src/js/countdown.js?v=0.04"></script>
 
-		<div class="">	
+		<div class="">
 			<div class="container">
 				<div class="row" style="">
 					<div class="col-md-12">
@@ -457,19 +491,19 @@ include'componens/header.php';
 											$tanggal = date('d', $waktu);
 											$bulan = date('M', $waktu);
 
-											?>
+										?>
 											<li class="media">
 												<div class="media-left">
 													<div class="panel-body">
 														<div class="panel_tgl">
 															<div class="panel-heading-tgl">
 																<span class="text-center">
-																	<?= $bulan ?>	
+																	<?= $bulan ?>
 																</span>
 															</div>
 															<div class="panel-body-tgl text-primary">
 																<span class="text-center">
-																	<?= $tanggal ?>	
+																	<?= $tanggal ?>
 																</span>
 															</div>
 														</div>
@@ -485,7 +519,7 @@ include'componens/header.php';
 										<?php } ?>
 									</ul>
 									<div class="panel-footer">
-										<a href="<?= base_url('beranda/TampilJadwalKegiatan')?>" class="btn_more btn-primary btn-block">More Events »</a>
+										<a href="<?= base_url('beranda/TampilJadwalKegiatan') ?>" class="btn_more btn-primary btn-block">More Events »</a>
 									</div>
 								</div>
 							</div>
@@ -500,5 +534,4 @@ include'componens/header.php';
 
 
 
-<?php include'componens/footer.php';?>
-
+<?php include 'componens/footer.php'; ?>

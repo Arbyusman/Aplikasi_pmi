@@ -11,6 +11,10 @@ class golongan_darah extends CI_Controller {
 		$this->load->model('M_golongan');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('M_jadwal');
+		$this->load->model('M_darah');
+		$this->load->model('M_jenis_darah');
+		$this->load->model('M_jumlah_darah_jenis');
 
 		// validation login
 		if($this->session->userdata('status') != "login"){
@@ -21,9 +25,12 @@ class golongan_darah extends CI_Controller {
 	public function index()
 	{
 
-		$tampilData = $this->M_golongan->getDataGolongan();
+		$data['darah'] = $this->M_darah->getDataDarah();
+		$data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
+		$data['data'] = $this->M_jumlah_darah_jenis->getJumlahJenisDarahByJenisCount();
+		$data['stok'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarahAll();
 
-		$data = array('tampilkan' => $tampilData);
+		// $data = array('tampilkan' => $tampilData);
 
 		$data['title'] = 'PMI - Provinsi Sultra';
 

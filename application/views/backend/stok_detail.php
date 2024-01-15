@@ -41,11 +41,14 @@
 						<tr>
 							<th width="2px">No.</th>
 							<th>Instansi / UPTD</th>
-							<th>Golongann Darah</th>
-							<th>WB</th>
-							<th>PRC</th>
-							<th>TC</th>
-							<th>Stok</th>
+							<th width="15%">Golongann Darah</th>
+							<?php
+							foreach ($jenis_darah as $jenis_darah_title) {
+							?>
+								<th width="13%"><?= $jenis_darah_title->name ?></th>
+							<?php } ?>
+							
+							<th width="15%">Stok</th>
 						</tr>
 					</thead>
 					<tbody id="body-data">
@@ -60,7 +63,7 @@
 									<?php
 									foreach ($darah as $darahItem) {
 									?>
-										<input type="text" value="<?= $darahItem->name ?>" class="form-control prc" readonly /><br />
+										<input  type="text" value="<?= $darahItem->name ?>" class="form-control prc 6" readonly /><br />
 									<?php } ?>
 								</td>
 								<?php
@@ -86,7 +89,9 @@
 								<?php } ?>
 
 								<td>
-									<?php echo $stok->total; ?>
+									<span class="hr">
+										<?php echo $stok->total; ?>
+									</span>
 								</td>
 
 							</div>
