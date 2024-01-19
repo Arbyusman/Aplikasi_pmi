@@ -52,7 +52,7 @@ class Ketersediaan extends CI_Controller
     $stok_darah = $this->M_ketersediaan->get_stok_darahDarah($id);
 
 
-    var_dump($stok_darah);
+    // var_dump($stok_darah);
     exit();
 
     // Return the stok_darah as JSON
@@ -138,6 +138,7 @@ class Ketersediaan extends CI_Controller
   {
     $data['data_pendonor'] = $this->M_datapendonor->getDataDonor();
 
+    // var_dump($data);
     $data['title'] = 'PMI - Provinsi Sultra';
 
     $this->load->view('backend/data_pendonor_darah', $data);
@@ -148,6 +149,7 @@ class Ketersediaan extends CI_Controller
   {
 
     $data['tampil_user'] = $this->M_ketersediaan->get_user();
+    $data['darah'] = $this->M_darah->getDataDarah();
 
     $data['title'] = 'PMI - Provinsi Sultra';
 
@@ -172,7 +174,10 @@ class Ketersediaan extends CI_Controller
   public function Aksi_inputform()
   {
 
-    $user_id = $this->input->post('user_id');
+    $email = $this->input->post('email');
+		$nama_lengkap = $this->input->post('nama_lengkap');
+		$no_hp = $this->input->post('no_hp');
+
     $no_kartudonor = $this->input->post('no_kartudonor');
     $golongan_darah_id = $this->input->post('golongan_darah_id');
     $bersedia_donor_puasa = $this->input->post('bersedia_donor_puasa');
@@ -189,13 +194,15 @@ class Ketersediaan extends CI_Controller
     $no_telepon_kantor = $this->input->post('no_telepon_kantor');
 
 
-
+    $now = date('Y-m-d H:i:s'); 
     $data = array(
-      'user_id' => $user_id,
+      'email' => $email,
+			'nama_lengkap' => $nama_lengkap,
+			'no_hp' => $no_hp,
       'no_kartudonor' => $no_kartudonor,
       'alamat_kantor' => $alamat_kantor,
       'no_telepon_kantor' => $no_telepon_kantor,
-      'golongan_darah_id' => $golongan_darah_id,
+      'golongan_darah_id' => intval($golongan_darah_id),
       'bersedia_donor_puasa' => $bersedia_donor_puasa,
       'bersedia_donor_diluar_rutin' => $bersedia_donor_diluar_rutin,
       'donor_terakhir' => $donor_terakhir,
@@ -205,12 +212,16 @@ class Ketersediaan extends CI_Controller
       'pekerjaan' => $pekerjaan,
       'jenis_kelamin' => $jenis_kelamin,
       'tempat_lahir' => $tempat_lahir,
-      'tgl_lahir' => $tgl_lahir
+      'tgl_lahir' => $tgl_lahir,
+      'created_by' => $this->session->nama,
+			'created_at' => $now,
     );
 
 
     // simpan data
     $save = $this->M_ketersediaan->inputFormDonadm($data);
+    // var_dump($save);
+    // die;
     $this->session->set_flashdata('flash', 'Disimpan');
     redirect('Ketersediaan/datapendonor');
   }
@@ -263,7 +274,8 @@ class Ketersediaan extends CI_Controller
   public function aksiHapusDon($id)
   {
 
-    $this->M_datapendonor->deleteDon($id);
+    $result = $this->M_datapendonor->deleteDon(intval($id));
+    // var_dump($result);
     $this->session->set_flashdata('flash', 'Dihapus');
     redirect('Ketersediaan/datapendonor');
   }
@@ -407,14 +419,19 @@ class Ketersediaan extends CI_Controller
     $result = $this->M_jumlah_darah_jenis->getJumlahJenisDarah($jadwal_id, $darah_id, $jenis_darah_id);
 
 
+    $now = date('Y-m-d H:i:s'); 
     $dataInput = [
       'jadwal_id' => intval($jadwal_id),
       'darah_id' => intval($darah_id),
       'jenis_darah_id' => intval($jenis_darah_id),
       'total' => floatval($value),
+      'created_by' => $this->session->nama,
+			'created_at' => $now,
     ];
     $dataUpdate = [
       'total' => floatval($value),
+      'updated_by' => $this->session->nama,
+			'updated_at' => $now,
     ];
     if ($result === null) {
       $createStok = $this->M_jumlah_darah_jenis->createJumlahJenisDarah($dataInput);

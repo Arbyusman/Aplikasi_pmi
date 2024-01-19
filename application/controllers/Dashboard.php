@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller {
 		// $data['darah3'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'AB', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
 		// $data['darah4'] = $this->db->query("SELECT SUM(IF(golongan_darah_id LIKE 'O', stok_darah, 0)) AS stok_darahs FROM `ketersediaan_darah`")->row_array();
 
+		var_dump($this->session->nama);
 
 	
 		$data['darah'] = $this->M_darah->getDataDarah();

@@ -32,10 +32,12 @@ class Tentang_admin extends CI_Controller {
 		$prof = $this->input->post('profil');
 		$visi_misi = $this->input->post('visimisi');
 		
-
+		$now = date('Y-m-d H:i:s'); 
 		$data = array(
 			'profil' => $prof,
-			'visimisi' => $visi_misi
+			'visimisi' => $visi_misi,
+			'created_by' => $this->session->nama,
+			'created_at' => $now,
 		);
 
 		// simpan data
@@ -63,13 +65,16 @@ class Tentang_admin extends CI_Controller {
 
 	public function aksiUpdateTentang()
 	{
+		$now = date('Y-m-d H:i:s'); 
 		$id = $this->input->post('id');
 		$prof = $this->input->post('profil');
 		$vs = $this->input->post('visimisi');
 
 		$data = array(
 			'profil' => $prof,
-			'visimisi' => $vs
+			'visimisi' => $vs,
+			'updated_by' => $this->session->nama,
+			'updated_at' => $now,
 		);	
 
 

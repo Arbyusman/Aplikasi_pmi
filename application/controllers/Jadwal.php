@@ -40,17 +40,16 @@ class Jadwal extends CI_Controller {
 		$ins = $this->input->post('instansi');
 		$tempat = $this->input->post('tempat_kegiatan');
 		$ktg = $this->input->post('ket');
-		$update_by = $this->input->post('update_by');
-		$update_at = $this->input->post('update_at');
 
 
+		$now = date('Y-m-d H:i:s'); 
 		$data = array(
 			'waktu' => $wkt,
 			'instansi' => $ins,
 			'tempat_kegiatan' => $tempat,
 			'ket' => $ktg,
-			'update_by' => $update_by,
-			'update_at' => $update_at
+			'created_by' => $this->session->nama,
+			'created_at' => $now,
 		);
 
 
@@ -86,14 +85,15 @@ class Jadwal extends CI_Controller {
 		$update_by = $this->input->post('update_by');
 		$update_at = $this->input->post('update_at');
 
+		$now = date('Y-m-d H:i:s'); 
 
 		$data = array(
 			'waktu' => $wkt,
 			'instansi' => $ins,
 			'tempat_kegiatan' => $tempat,
 			'ket' => $ktg,
-			'update_by' => $update_by,
-			'update_at' => $update_at
+			'updated_by' => $this->session->nama,
+			'updated_at' => $now,
 		);	
 		
 

@@ -58,8 +58,8 @@
 								<td><?= $data->instansi; ?></td>
 								<td><?= $data->tempat_kegiatan; ?></td>
 								<td><?= $data->ket; ?></td>
-								<td><?= $data->update_by; ?></td>
-								<td><?= $data->update_at; ?></td>
+								<td><?= $data->updated_by; ?></td>
+								<td><?= $data->updated_at; ?></td>
 								<td class="text-dark text-nowrap">
 									<a href="<?php echo base_url('jadwal/form_edit_jad/'). $data->id ?>" class="btn btn-warning">Edit</a>
 									<a href="<?php echo base_url('jadwal/aksiHapusKeg/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
@@ -101,14 +101,6 @@
 					<div class="form-group">
 						<label for="">Keterangan</label>
 						<textarea class="form-control" name="ket" placeholder="Masukan Keterangan" required></textarea>
-					</div> 
-					<div class="form-group">
-						<label for="">Update By</label>
-						<input type="text" class="form-control"  name="update_by" placeholder="Masukan Update By" required>
-					</div>
-					<div class="form-group">
-						<label for="">Update at</label>
-						<input type="time" class="form-control"  name="update_at" id="update_at"  placeholder="Masukan Update At" readonly>
 					</div> 
 				</div>
 				<div class="modal-footer">

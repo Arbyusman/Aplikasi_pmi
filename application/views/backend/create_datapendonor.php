@@ -1,11 +1,10 @@
-<?php include 'componen/header.php'?>
+<?php include 'componen/header.php' ?>
 
 
 
 <!-- css -->
 <style>
-
-	body{
+	body {
 		background-image: url(https://bit.ly/2KhEw1d);
 		background-position-x: center;
 		background-position-y: center;
@@ -17,25 +16,32 @@
 		background-clip: initial;
 		background-color: initial;
 	}
-	
-	.top-buffer-1 { margin-top:20px; }
-	.top-buffer { margin-top:2px; }
+
+	.top-buffer-1 {
+		margin-top: 20px;
+	}
+
+	.top-buffer {
+		margin-top: 2px;
+	}
+
 	fieldset.scheduler-border {
 		border: 1px groove #ddd !important;
 		padding: 0 1.4em 1.4em 1.4em !important;
 		margin: 0 0 1.5em 0 !important;
-		-webkit-box-shadow:  0px 0px 0px 0px #000;
-		box-shadow:  0px 0px 0px 0px #000;
+		-webkit-box-shadow: 0px 0px 0px 0px #000;
+		box-shadow: 0px 0px 0px 0px #000;
 	}
 
 	legend.scheduler-border {
 		font-size: 1.2em !important;
 		font-weight: bold !important;
 		text-align: left !important;
-		width:auto;
-		padding:0 1px;
-		border-bottom:none;
+		width: auto;
+		padding: 0 1px;
+		border-bottom: none;
 	}
+
 	.login-wrapper {
 		width: 100%;
 		height: 100%;
@@ -43,8 +49,8 @@
 		display: table;
 		z-index: 2;
 	}
-	.note
-	{
+
+	.note {
 		text-align: center;
 		height: 80px;
 		background: -webkit-linear-gradient(left, #0072ff, #8811c5);
@@ -52,67 +58,100 @@
 		font-weight: bold;
 		line-height: 80px;
 	}
-	.note p{ font-size:30px; }
-	.form-content
-	{
+
+	.note p {
+		font-size: 30px;
+	}
+
+	.form-content {
 		padding: 5%;
 		border: 1px solid #ced4da;
 		margin-bottom: 2%;
 	}
-	.form-control{
-		border-radius:1.5rem;
+
+	.form-control {
+		border-radius: 1.5rem;
 	}
-	.bk{
+
+	.bk {
 		background-color: white;
 	}
+
 	@media print {
 		body * {
 			visibility: visible;
 		}
-		#section-to-print, #section-to-print * {
+
+		#section-to-print,
+		#section-to-print * {
 			visibility: hidden;
 		}
+
 		#section-to-print {
 			position: absolute;
 			left: 0;
 			top: 0;
 		}
-		.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+
+		.col-sm-1,
+		.col-sm-2,
+		.col-sm-3,
+		.col-sm-4,
+		.col-sm-5,
+		.col-sm-6,
+		.col-sm-7,
+		.col-sm-8,
+		.col-sm-9,
+		.col-sm-10,
+		.col-sm-11,
+		.col-sm-12 {
 			float: left;
 		}
+
 		.col-sm-12 {
 			width: 100%;
 		}
+
 		.col-sm-11 {
 			width: 91.66666667%;
 		}
+
 		.col-sm-10 {
 			width: 83.33333333%;
 		}
+
 		.col-sm-9 {
 			width: 75%;
 		}
+
 		.col-sm-8 {
 			width: 66.66666667%;
 		}
+
 		.col-sm-7 {
 			width: 58.33333333%;
 		}
+
 		.col-sm-6 {
 			width: 50%;
 		}
+
 		.col-sm-5 {
 			width: 41.66666667%;
 		}
+
 		.col-sm-4 {
 			width: 33.33333333%;
 		}
+
 		.col-sm-3 {
 			width: 25%;
 		}
+
 		.col-sm-2 {
 			width: 16.66666667%;
 		}
+
 		.col-sm-1 {
 			width: 8.33333333%;
 		}
@@ -137,7 +176,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="alert alert-success" role="alert">
-									Data Form Pendonor  <strong>Berhasil!</strong> <?= $this->session->flashdata('flash'); ?>
+									Data Form Pendonor <strong>Berhasil!</strong> <?= $this->session->flashdata('flash'); ?>
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
@@ -152,32 +191,24 @@
 
 						<!-- form daftar -->
 						<div class="form-content bk">
-							<!-- <a href="<?= base_url('data_user')?>" class="btn btn-primary ml-10" target="_blank">Lihat Data User</a> -->
-							<form action="<?= base_url('ketersediaan/Aksi_inputform')?>" method="POST">
+							<form action="<?= base_url('ketersediaan/Aksi_inputform') ?>" method="POST">
 								<fieldset class="scheduler-border">
 									<legend class="scheduler-border">Data Akun</legend>
 									<div class="row">
 										<div class="col-sm-4">
 											<label for="">Email</label>
-											<select class="form-control select2" id="user_id" name="user_id" required>
-												<option value="">- Pilih -</option>
-												<?php 
-												foreach ($tampil_user as $key) {
-													?>
-													<option value="<?= $key->id?>"><?= $key->email?></option>
-												<?php } ?>
-											</select>
+											<input type="email" class="form-control" placeholder="Email" id="email" name="email">
 										</div>
 										<div class="col-sm-4">
 											<label for="">Nama Lengkap</label>
-											<input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukan Nama Lengkap" required>
+											<input type="text" class="form-control" placeholder="Nama Lengkap" id="nama_lengkap" name="nama_lengkap">
 										</div>
 										<div class="col-sm-4">
 											<label for="">No.Hp</label>
-											<input type="text" class="form-control" id="no_hp"  name="no_hp" placeholder="Masukan No.Hp" required>
+											<input type="text" class="form-control" placeholder="No HP" id="no_hp" name="no_hp">
 										</div>
 									</div>
-								</fieldset>	
+								</fieldset>
 								<br>
 
 								<!-- Educational Qualification -->
@@ -192,10 +223,10 @@
 											<label for="">Golongan Darah</label>
 											<select class="form-control" id="golongan_darah_id" name="golongan_darah_id" required>
 												<option value="">- Pilih -</option>
-												<option value="A">A</option>
-												<option value="B">B</option>
-												<option value="AB">AB</option>
-												<option value="O">O</option>
+												<option value="1">A</option>
+												<option value="2">AB</option>
+												<option value="3">B</option>
+												<option value="4">O</option>
 											</select>
 										</div>
 										<div class="col-sm-4">
@@ -263,17 +294,17 @@
 										</div>
 										<div class="col-sm-4">
 											<label for="">Tanggal Lahir</label>
-											<input type="date" name="tgl_lahir" id="tgl_lahir"  class="form-control" required>
+											<input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" required>
 										</div>
 									</div>
 									<div class="row top-buffer mt-4">
 										<div class="col-sm-4">
 											<label for="">Alamat pekerjaan</label>
-											<input type="text" name="alamat_kantor" id="alamat_kantor"  class="form-control" placeholder="Masukan Alamat Kantor">
+											<input type="text" name="alamat_kantor" id="alamat_kantor" class="form-control" placeholder="Masukan Alamat Kantor">
 										</div>
 										<div class="col-sm-4">
 											<label for="">No.Telphone Kantor</label>
-											<input type="text" name="no_telepon_kantor" id="no_telepon_kantor" placeholder="Masukan No.Telphone Kantor"  class="form-control">
+											<input type="text" name="no_telepon_kantor" id="no_telepon_kantor" placeholder="Masukan No.Telphone Kantor" class="form-control">
 										</div>
 									</div>
 								</fieldset>
@@ -292,4 +323,4 @@
 
 
 
-<?php include 'componen/footer.php'?>
+<?php include 'componen/footer.php' ?>

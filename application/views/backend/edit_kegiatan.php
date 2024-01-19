@@ -49,14 +49,6 @@ include 'componen/header.php'
 						<label for="">Keterangan</label>
 						<textarea class="form-control" name="ket"><?= $jadwal->ket; ?></textarea>
 					</div> 
-					<div class="form-group">
-						<label for="">Update By</label>
-						<input type="text" class="form-control"  name="update_by" value="<?= $jadwal->update_by; ?>">
-					</div>
-					<div class="form-group">
-						<label for="">Update at</label>
-						<input type="time" class="form-control"  name="update_at" value="<?= $jadwal->update_at; ?>">
-					</div> 
 					<button type="submit" class="btn btn-primary mt-4"><i class="fas fa-save"></i> Update</button>
 				</div>
 			</form>

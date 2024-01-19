@@ -369,7 +369,7 @@ include 'componens/header.php';
 								<?php
 								foreach ($jenis_darah as $jenis_darah_item) {
 									$totalByJenis = 0;
-								
+
 									foreach ($data_darah as $data__darah_item) {
 
 										if ($darah_item->id == $data__darah_item->darah_id && $data__darah_item->jenis_darah_id == $jenis_darah_item->id) {
@@ -378,18 +378,18 @@ include 'componens/header.php';
 									}
 								?>
 									<!-- <?php
-									$allowedNames = ['PRC', 'TC', 'WB'];
+											$allowedNames = ['PRC', 'TC', 'WB'];
 
-									if (in_array($jenis_darah_item->name, $allowedNames)) {
-									?>
+											if (in_array($jenis_darah_item->name, $allowedNames)) {
+											?>
 										<p><?= $jenis_darah_item->name ?> <?= $totalByJenis ?></p>
 									<?php
-									}
+											}
 									?> -->
-									 	<p><?= $jenis_darah_item->name ?> <?= $totalByJenis ?></p>
+									<p><?= $jenis_darah_item->name ?> <?= $totalByJenis ?></p>
 
 								<?php
-								} ?> 
+								} ?>
 							</div>
 							<br>
 							<h5 style="color: white;">Stok Darah :
@@ -453,6 +453,7 @@ include 'componens/header.php';
 										<p>Seconds</p>
 									</div>
 								</div>
+
 							</div>
 							<div class="row">
 								<div class="col container-fluid">
@@ -529,6 +530,34 @@ include 'componens/header.php';
 			</div>
 		</div>
 	</section><!-- End Services Section -->
+
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			function updateTime() {
+				let now = new Date();
+
+				let months = now.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month
+				let days = now.getDate();
+				let hours = now.getHours().toString().padStart(2, '0');
+				let minutes = now.getMinutes().toString().padStart(2, '0');
+				let seconds = now.getSeconds().toString().padStart(2, '0');
+
+				// Display the time
+				document.getElementById('months').innerText = months.toString().padStart(2, '0');
+				document.getElementById('days').innerText = days.toString().padStart(2, '0');
+				document.getElementById('hours').innerText = hours;
+				document.getElementById('minutes').innerText = minutes;
+				document.getElementById('seconds').innerText = seconds;
+			}
+
+			// Update the time every second
+			setInterval(updateTime, 500);
+
+			// Initial update
+			updateTime();
+		});
+	</script>
 </main><!-- End #main -->
 
 

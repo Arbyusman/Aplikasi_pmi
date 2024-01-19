@@ -64,14 +64,14 @@
 								<td><?= $data->jenis_kelamin; ?></td>
 								<td><?= $data->alamat_kantor; ?></td>
 								<td><?= $data->no_telepon_kantor; ?></td>
-								<td><?= $data->golongan_darah; ?></td>
+								<td><?= $data->name; ?></td>
 								<td><?= $data->bersedia_donor_puasa; ?></td>
 								<td><?= $data->bersedia_donor_diluar_rutin; ?></td>
 								<td><?= $data->donor_terakhir; ?></td>
 								<td><?= $data->donor_keberapa; ?></td>
 								<td class="text-dark text-nowrap">
-									<a href="<?= base_url('Ketersediaan/formedit_datapendonor/').$data->id;?>" class="btn btn-warning">Edit</a> 
-									<a href="<?= base_url('Ketersediaan/aksiHapusDon/').$data->id;?>" Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Hapus</a>
+									<a href="<?= base_url('Ketersediaan/formedit_datapendonor/').$data->form_pendonor_id;?>" class="btn btn-warning">Edit</a> 
+									<a href="<?= base_url('Ketersediaan/aksiHapusDon/').$data->form_pendonor_id;?>" Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Hapus</a>
 								</td>
 							</tr>
 						<?php } ?>

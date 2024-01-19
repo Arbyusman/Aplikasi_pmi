@@ -82,7 +82,8 @@ class M_ketersediaan extends CI_Model
 	public function inputFormDonadm($data)
 	{
 
-		return $this->db->insert('form_pendonor', $data);
+		$result = $this->db->insert('form_pendonor', $data);
+		return $result;
 	}
 
 	public function getTampilket($id)
