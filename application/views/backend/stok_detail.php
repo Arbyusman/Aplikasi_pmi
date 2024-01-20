@@ -29,7 +29,10 @@
 
 				<!-- Button trigger modal -->
 				<div style="float: right;">
-					<a href="<?= base_url('ketersediaan/gabungan') ?>" class="btn btn-primary mb-5 d-flex align-items-center"><i class="fas fa-arrow-left mr-2"></i> kembali</a>
+					<div class="d-flex justify-content-end ">
+						<a href="<?= base_url('ketersediaan/gabungan') ?>" class="btn btn-primary mb-5 d-flex align-items-center mr-2"><i class="fas fa-arrow-left mr-2"></i> kembali</a>
+						<a href="<?= base_url('ketersediaan/stok_darah_detail/' . $jadwal->id) ?>" class="btn btn-success mb-5 d-flex align-items-center"><i class="fas fa-plus mr-2"></i> Simpan</a>
+					</div>
 				</div>
 			</h6>
 
@@ -47,7 +50,9 @@
 							?>
 								<th width="13%"><?= $jenis_darah_title->name ?></th>
 							<?php } ?>
-							
+
+							<th width="15%">Updated By</th>
+							<th width="15%">Updated At</th>
 							<th width="15%">Stok</th>
 						</tr>
 					</thead>
@@ -63,7 +68,7 @@
 									<?php
 									foreach ($darah as $darahItem) {
 									?>
-										<input  type="text" value="<?= $darahItem->name ?>" class="form-control prc 6" readonly /><br />
+										<input type="text" value="<?= $darahItem->name ?>" class="form-control prc 6" readonly /><br />
 									<?php } ?>
 								</td>
 								<?php
@@ -73,20 +78,40 @@
 										<?php
 										$value = 0;
 										foreach ($darah as $darahItem) {
-
 											foreach ($data as $dataItem) {
-												// var_dump($dataItem);
-												// die;
-												if ($jenisDarahItem->id == $dataItem->jenis_darah_id && $darahItem->id == $dataItem->darah_id && $jadwal->id == $dataItem->jadwal_id) {
+												if ($jenisDarahItem->id === $dataItem->jenis_darah_id && $darahItem->id === $dataItem->darah_id && $jadwal->id === $dataItem->jadwal_id) {
 													$value = $dataItem->jumlah_darah_jenis_total;
 												}
 											}
 										?>
-
 											<input type="number" value="<?= isset($value) ? $value : 0 ?>" placeholder="<?= $jenisDarahItem->name; ?>" data-jadwal-id="<?= $jadwal->id; ?>" data-darah-id="<?= $darahItem->id; ?> " data-jenis-id="<?= $jenisDarahItem->id; ?>" class="form-control prc" onchange="updateRequestData($(this))" /><br />
-										<?php } ?>
+										<?php
+										}
+										?>
 									</td>
+
 								<?php } ?>
+
+								<td>
+									<?php
+									if (!empty($data)) {
+										$lastItem = end($data);
+										echo isset($lastItem->updated_by) ? $lastItem->updated_by : $lastItem->created_by;
+									} else {
+										echo "-";
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									if (!empty($data)) {
+										$lastItem = end($data);
+										echo isset($lastItem->updated_at) ? $lastItem->updated_at : $lastItem->created_at;
+									} else {
+										echo "-";
+									}
+									?>
+								</td>
 
 								<td>
 									<span class="hr">

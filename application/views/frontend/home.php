@@ -255,6 +255,16 @@ include 'componens/header.php';
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	}
 
+	#date {
+		justify-content: space-around;
+		max-width: 600px;
+		margin: 50px auto;
+		background-color: #333;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	}
+
 	.countdown-item {
 		text-align: center;
 		color: #fff;
@@ -430,6 +440,12 @@ include 'componens/header.php';
 
 							<strong style="font-size: 50px;" align="center" id="instansi_saja"></strong>
 
+
+							<div class="row ">
+								<div id="date" class="col-8 ">
+								</div>
+
+							</div>
 							<div class="row">
 								<div id="countdown">
 									<div class="countdown-item">
@@ -532,30 +548,69 @@ include 'componens/header.php';
 	</section><!-- End Services Section -->
 
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+
 	<script>
 		$(document).ready(function() {
-			function updateTime() {
-				let now = new Date();
 
-				let months = now.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month
-				let days = now.getDate();
-				let hours = now.getHours().toString().padStart(2, '0');
-				let minutes = now.getMinutes().toString().padStart(2, '0');
-				let seconds = now.getSeconds().toString().padStart(2, '0');
+			$.ajax({
+				url: '<?php echo base_url("jadwal/getAllJAdwal"); ?>',
+				type: 'GET',
+				dataType: 'json',
+				success: function(data) {
 
-				// Display the time
-				document.getElementById('months').innerText = months.toString().padStart(2, '0');
-				document.getElementById('days').innerText = days.toString().padStart(2, '0');
-				document.getElementById('hours').innerText = hours;
-				document.getElementById('minutes').innerText = minutes;
-				document.getElementById('seconds').innerText = seconds;
-			}
+					// console.log("time", data.waktu)
 
-			// Update the time every second
-			setInterval(updateTime, 500);
+					if (data && data.waktu) {
+						var responseDataWaktu = new Date(data.waktu.replace(/-/g, '/'));
 
-			// Initial update
-			updateTime();
+						var now = new Date();
+
+						if (now > responseDataWaktu) {
+							var timeGreater = `<h1>
+                        Tidak ada waktu donor yang tersedia
+                    </h1>`
+							document.getElementById('countdown').innerHTML = timeGreater;
+							console.log("Current time is greater");
+						} else {
+
+							var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+							var dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+							var timeDifference = responseDataWaktu - now;
+							var seconds = Math.floor(timeDifference / 1000) % 60;
+							var minutes = Math.floor(timeDifference / (1000 * 60)) % 60;
+							var hours = Math.floor(timeDifference / (1000 * 60 * 60)) % 24;
+							var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+							var formattedTime = responseDataWaktu.toLocaleTimeString('id-ID', {
+								hour: '2-digit',
+								minute: '2-digit'
+							});
+
+							var formattedDate = dayNames[responseDataWaktu.getDay()] + " " + monthNames[responseDataWaktu.getMonth()] + " " + responseDataWaktu.getFullYear();
+							document.getElementById('date').innerHTML = `<h1 class="d-flex flex-column" >
+                    <h1 style="color:white !important;">${formattedDate}</h1>	
+                    <h1 style="color:white !important;">${formattedTime}</h1>	
+                </h1>`;
+
+							// Display the remaining time
+							document.getElementById('months').innerText = '00';
+							document.getElementById('days').innerText = days.toString().padStart(2, '0');
+							document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+							document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+							document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+						}
+					} else {
+						console.log("Error: 'waktu' not found in the response");
+					}
+				},
+				error: function(xhr, status, error) {
+					console.error('Error fetching data: ' + error);
+				}
+			});
+
 		});
 	</script>
 </main><!-- End #main -->

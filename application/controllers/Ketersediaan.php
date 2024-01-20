@@ -398,6 +398,8 @@ class Ketersediaan extends CI_Controller
     // $data['data'] = $this->M_golongan->getDataGolongan();
     $data['jadwal'] = $this->M_jadwal->getDataJadwalById(intval($id));
     
+    // var_dump($data);
+    // die;
     $data['stok'] = $this->M_jumlah_darah_jenis->getJumlahJenisDarahCount($id);
     
     $data['data'] = $this->M_jumlah_darah_jenis->getDataJumlahJenisDarah(intval($id));

@@ -47,6 +47,8 @@
 							<th>Bersedia Donor Diluar Rutin</th>
 							<th>Donor Terakhir</th>
 							<th>Donor Keberapa</th>
+							<th>Updated by</th>
+							<th>Updated at</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -69,6 +71,8 @@
 								<td><?= $data->bersedia_donor_diluar_rutin; ?></td>
 								<td><?= $data->donor_terakhir; ?></td>
 								<td><?= $data->donor_keberapa; ?></td>
+								<td><?= isset($data->updated_by) ? $data->updated_by : $data->created_by; ?></td>
+								<td><?= isset($data->updated_at) ? $data->updated_at : $data->created_at; ?></td>
 								<td class="text-dark text-nowrap">
 									<a href="<?= base_url('Ketersediaan/formedit_datapendonor/').$data->form_pendonor_id;?>" class="btn btn-warning">Edit</a> 
 									<a href="<?= base_url('Ketersediaan/aksiHapusDon/').$data->form_pendonor_id;?>" Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Hapus</a>

@@ -9,9 +9,20 @@ class M_jadwal extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	public function getDataJadwalByTime() {
+		$this->db->select('*');
+		$this->db->from('jadwal_kegiatan');
+		$this->db->order_by('waktu', 'desc'); // Use 'asc' for ascending order
+		$this->db->limit(1);
+		$query = $this->db->get();
+	
+		return $query->row();
+	}
+
 
 	public function getDataJadwalById($id) {
-		$this->db->where('id', $id); // Add the condition to filter by id
+		$this->db->where('id', $id); 
 		$this->db->from('jadwal_kegiatan');
 		$query = $this->db->get();
 		

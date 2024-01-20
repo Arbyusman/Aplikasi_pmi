@@ -117,7 +117,7 @@ class Donor_darah extends CI_Controller
 
 		$save = $this->M_ketersediaan->inputFormDonadm($data);
 		// var_dump($save);
-		// die;
+		// die;exech z
 	}
 
 	public function AksiInsertDonorUser()

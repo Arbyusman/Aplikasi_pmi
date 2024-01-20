@@ -58,8 +58,8 @@
 								<td><?= $data->instansi; ?></td>
 								<td><?= $data->tempat_kegiatan; ?></td>
 								<td><?= $data->ket; ?></td>
-								<td><?= $data->updated_by; ?></td>
-								<td><?= $data->updated_at; ?></td>
+								<td><?= isset($data->updated_by) ? $data->updated_by : $data->created_by; ?></td>
+								<td><?= isset($data->updated_at) ? $data->updated_at : $data->created_at; ?></td>
 								<td class="text-dark text-nowrap">
 									<a href="<?php echo base_url('jadwal/form_edit_jad/'). $data->id ?>" class="btn btn-warning">Edit</a>
 									<a href="<?php echo base_url('jadwal/aksiHapusKeg/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>

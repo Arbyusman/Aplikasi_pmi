@@ -1,11 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends CI_Controller
+{
 
 
-	function __construct(){
-		parent::__construct();		
+	function __construct()
+	{
+		parent::__construct();
 		$this->load->model('M_login');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -16,7 +18,7 @@ class Auth extends CI_Controller {
 	{
 		$data['title'] = 'PMI - Provinsi Sultra';
 
-		$this->load->view('backend/v_login', $data);	
+		$this->load->view('backend/v_login', $data);
 	}
 
 	public function aksi_login()
@@ -29,9 +31,9 @@ class Auth extends CI_Controller {
 			'username' => $username,
 			'password' => md5($password)
 		);
-		
-		$cek = $this->M_login->cek_login("admin",$where)->num_rows();
-		if($cek > 0){
+
+		$cek = $this->M_login->cek_login("admin", $where)->num_rows();
+		if ($cek > 0) {
 
 			$data_session = array(
 				'nama' => $username,
@@ -41,22 +43,50 @@ class Auth extends CI_Controller {
 			$this->session->set_userdata($data_session);
 
 			redirect(base_url("dashboard"));
-
-		}else{
+		} else {
 			echo "<script>
 			alert('username dan Password Salah!');
 			window.location='" . site_url('auth') . "'
 			</script>";
 		}
+	}
 
+	public function addAdmin()
+	{
+
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		$where = array(
+			'username' => $username,
+			'password' => md5($password)
+		);
+
+		$cek = $this->M_login->cek_login("admin", $where)->num_rows();
+		if ($cek > 0) {
+
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login"
+			);
+
+			$this->session->set_userdata($data_session);
+
+			redirect(base_url("dashboard"));
+		} else {
+			echo "<script>
+			alert('username dan Password Salah!');
+			window.location='" . site_url('auth') . "'
+			</script>";
+		}
 	}
 
 
-	public function logout(){
+	public function logout()
+	{
 		$this->session->sess_destroy();
 		redirect(base_url('auth'));
 	}
-
 }
 
 /* End of file Auth.php */

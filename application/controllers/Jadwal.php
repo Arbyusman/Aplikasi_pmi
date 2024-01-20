@@ -60,6 +60,15 @@ class Jadwal extends CI_Controller {
 	}
 
 
+	public function getAllJAdwal()
+	{
+		
+		$data = $this->M_jadwal->getDataJadwalByTime();
+		$this->output->set_content_type('application/json')->set_output(json_encode($data));
+
+	}
+
+
 	public function form_edit_jad($id)
 	{
 		$editkets = $this->M_jadwal->getTampilkeg($id);
