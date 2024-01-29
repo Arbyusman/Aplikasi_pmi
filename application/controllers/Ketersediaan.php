@@ -138,7 +138,6 @@ class Ketersediaan extends CI_Controller
   {
     $data['data_pendonor'] = $this->M_datapendonor->getDataDonor();
 
-    // var_dump($data);
     $data['title'] = 'PMI - Provinsi Sultra';
 
     $this->load->view('backend/data_pendonor_darah', $data);
@@ -176,6 +175,8 @@ class Ketersediaan extends CI_Controller
   public function Aksi_inputform()
   {
 
+    // var_dump($this->input->post());
+    // die;
     $email = $this->input->post('email');
 		$nama_lengkap = $this->input->post('nama_lengkap');
 		$no_hp = $this->input->post('no_hp');
@@ -221,6 +222,7 @@ class Ketersediaan extends CI_Controller
       'jenis_kelamin' => $jenis_kelamin,
       'tempat_lahir' => $tempat_lahir,
       'tgl_lahir' => $tgl_lahir,
+      'keterangan' => $keterangan,
       'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
     );

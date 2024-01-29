@@ -62,7 +62,7 @@
 								<td><?= $no++; ?></td>
 								<td><?= $data->no_kartudonor; ?></td>
 								<td><?= $data->nama_lengkap; ?></td>
-								<td><?= $data->email; ?></td>
+								<td><?= $data->form_pendonor_email; ?></td>
 								<td><?= $data->jenis_kelamin; ?></td>
 								<td><?= $data->alamat_kantor; ?></td>
 								<td><?= $data->no_telepon_kantor; ?></td>
@@ -71,7 +71,7 @@
 								<td><?= $data->bersedia_donor_diluar_rutin; ?></td>
 								<td><?= $data->donor_terakhir; ?></td>
 								<td><?= $data->donor_keberapa; ?></td>
-								<td><?= isset($data->updated_by) ? $data->updated_by : $data->created_by; ?></td>
+								<td><?= isset($data->updated_by_username) ? $data->updated_by_username : $data->created_by_username; ?></td>
 								<td><?= isset($data->updated_at) ? $data->updated_at : $data->created_at; ?></td>
 								<td class="text-dark text-nowrap">
 									<a href="<?= base_url('Ketersediaan/formedit_datapendonor/').$data->form_pendonor_id;?>" class="btn btn-warning">Edit</a> 

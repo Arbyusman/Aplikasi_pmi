@@ -7,9 +7,16 @@ class M_datapendonor extends CI_Model
 	public function getDataDonor()
 	{
 
-		$this->db->select('*,darah.id as darah_id, form_pendonor.id as form_pendonor_id');
+		$this->db->select('*, darah.id as darah_id, form_pendonor.id as form_pendonor_id, 
+                   admin_create.username as created_by_username,
+                   admin_update.username as updated_by_username,
+                   form_pendonor.email as form_pendonor_email',
+				
+				);
 		$this->db->from('form_pendonor');
 		$this->db->join('darah', 'form_pendonor.golongan_darah_id = darah.id');
+		$this->db->join('admin as admin_create', 'form_pendonor.created_by = admin_create.id', 'right');
+		$this->db->join('admin as admin_update', 'form_pendonor.updated_by = admin_update.id', 'left');
 		$query = $this->db->get();
 		return $query->result();
 	}

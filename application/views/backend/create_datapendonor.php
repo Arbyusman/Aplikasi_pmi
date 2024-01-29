@@ -196,7 +196,7 @@
 									<legend class="scheduler-border">Data Akun</legend>
 									<div class="row">
 										<div class="col-sm-4">
-											<label for="">Email</label>
+											<label for="email">Email</label>
 											<input type="email" class="form-control" placeholder="Email" id="email" name="email">
 										</div>
 										<div class="col-sm-4">
@@ -332,7 +332,7 @@
 									<div class="row top-buffer mt-4">
 										<div class="col-12">
 											<label for="">Keterangan</label>
-											<textarea rows="5" type="text" name="Keterangan" id="Keterangan" placeholder="Masukan Keterangan" class="form-control">
+											<textarea rows="5" type="text" name="keterangan" id="Keterangan" placeholder="Masukan Keterangan" class="form-control">
 
 										</textarea>
 										</div>
