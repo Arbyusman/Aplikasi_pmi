@@ -150,7 +150,9 @@ class Ketersediaan extends CI_Controller
 
     $data['tampil_user'] = $this->M_ketersediaan->get_user();
     $data['darah'] = $this->M_darah->getDataDarah();
+    $data['jenis_darah'] = $this->M_jenis_darah->getDataJenisDarah();
 
+    // var_dump($this->session->userdata['id']);
     $data['title'] = 'PMI - Provinsi Sultra';
 
     $this->load->view('backend/create_datapendonor', $data);
@@ -178,6 +180,9 @@ class Ketersediaan extends CI_Controller
 		$nama_lengkap = $this->input->post('nama_lengkap');
 		$no_hp = $this->input->post('no_hp');
 
+    $jenis_darah_id = $this->input->post('jenis_darah_id');
+    $no_kantong = $this->input->post('no_kantong');
+
     $no_kartudonor = $this->input->post('no_kartudonor');
     $golongan_darah_id = $this->input->post('golongan_darah_id');
     $bersedia_donor_puasa = $this->input->post('bersedia_donor_puasa');
@@ -192,6 +197,7 @@ class Ketersediaan extends CI_Controller
     $tgl_lahir = $this->input->post('tgl_lahir');
     $alamat_kantor = $this->input->post('alamat_kantor');
     $no_telepon_kantor = $this->input->post('no_telepon_kantor');
+    $keterangan = $this->input->post('keterangan');
 
 
     $now = date('Y-m-d H:i:s'); 
@@ -200,6 +206,8 @@ class Ketersediaan extends CI_Controller
 			'nama_lengkap' => $nama_lengkap,
 			'no_hp' => $no_hp,
       'no_kartudonor' => $no_kartudonor,
+      'no_kantong' => $no_kantong,
+      'jenis_darah_id' => $jenis_darah_id,
       'alamat_kantor' => $alamat_kantor,
       'no_telepon_kantor' => $no_telepon_kantor,
       'golongan_darah_id' => intval($golongan_darah_id),
@@ -213,7 +221,7 @@ class Ketersediaan extends CI_Controller
       'jenis_kelamin' => $jenis_kelamin,
       'tempat_lahir' => $tempat_lahir,
       'tgl_lahir' => $tgl_lahir,
-      'created_by' => $this->session->nama,
+      'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
     );
 
@@ -427,12 +435,12 @@ class Ketersediaan extends CI_Controller
       'darah_id' => intval($darah_id),
       'jenis_darah_id' => intval($jenis_darah_id),
       'total' => floatval($value),
-      'created_by' => $this->session->nama,
+      'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
     ];
     $dataUpdate = [
       'total' => floatval($value),
-      'updated_by' => $this->session->nama,
+      'updated_by' => $this->session->userdata['id'],
 			'updated_at' => $now,
     ];
     if ($result === null) {

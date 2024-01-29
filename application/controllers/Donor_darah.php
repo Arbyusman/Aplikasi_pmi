@@ -110,7 +110,7 @@ class Donor_darah extends CI_Controller
 			'tempat_lahir' => $tempat_lahir,
 			'donor_terakhir' => $donor_terakhir,
 			'tgl_lahir' => $tgl_lahir,
-			'created_by' => $this->session->nama,
+			'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
 		);
 

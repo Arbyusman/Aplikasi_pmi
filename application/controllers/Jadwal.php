@@ -48,7 +48,7 @@ class Jadwal extends CI_Controller {
 			'instansi' => $ins,
 			'tempat_kegiatan' => $tempat,
 			'ket' => $ktg,
-			'created_by' => $this->session->nama,
+			'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
 		);
 
@@ -101,7 +101,7 @@ class Jadwal extends CI_Controller {
 			'instansi' => $ins,
 			'tempat_kegiatan' => $tempat,
 			'ket' => $ktg,
-			'updated_by' => $this->session->nama,
+			'updated_by' => $this->session->userdata['id'],
 			'updated_at' => $now,
 		);	
 		

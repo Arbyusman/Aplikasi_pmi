@@ -36,7 +36,7 @@ class Tentang_admin extends CI_Controller {
 		$data = array(
 			'profil' => $prof,
 			'visimisi' => $visi_misi,
-			'created_by' => $this->session->nama,
+			'created_by' => $this->session->userdata['id'],
 			'created_at' => $now,
 		);
 
@@ -73,7 +73,7 @@ class Tentang_admin extends CI_Controller {
 		$data = array(
 			'profil' => $prof,
 			'visimisi' => $vs,
-			'updated_by' => $this->session->nama,
+			'updated_by' => $this->session->userdata['id'],
 			'updated_at' => $now,
 		);	
 

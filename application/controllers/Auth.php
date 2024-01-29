@@ -32,10 +32,10 @@ class Auth extends CI_Controller
 			'password' => md5($password)
 		);
 
-		$cek = $this->M_login->cek_login("admin", $where)->num_rows();
-		if ($cek > 0) {
-
+		$user = $this->M_login->cek_login("admin", $where)->row();
+		if ($user > 0) {
 			$data_session = array(
+				'id' => $user->id,
 				'nama' => $username,
 				'status' => "login"
 			);

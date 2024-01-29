@@ -229,7 +229,29 @@
 												<option value="4">O</option>
 											</select>
 										</div>
+
+
 										<div class="col-sm-4">
+											<label for="">Jenis Darah</label>
+											<select class="form-control" name="jenis_darah_id" id="jenis_darah_id" required>
+												<option value="">- Pilih -</option>
+												<?php
+												foreach ($jenis_darah as $jenisDarahItem) {
+												?>
+													<option value="<?= $jenisDarahItem->id ?>"><?= $jenisDarahItem->name ?></option>
+
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+									<div class="row mt-4">
+										<div class="col-sm-6">
+											<label for="cname">No. Kantong Darah</label>
+											<input type="text" class="form-control" id="no_kantong" placeholder="Masukan No.Kantong Darah" name="no_kantong" required>
+										</div>
+
+										<div class="col-sm-6">
 											<label for="">Bersedia Donor Di Bulan Puasa</label>
 											<select class="form-control" name="bersedia_donor_puasa" id="bersedia_donor_puasa" required>
 												<option value="">- Pilih -</option>
@@ -307,6 +329,15 @@
 											<input type="text" name="no_telepon_kantor" id="no_telepon_kantor" placeholder="Masukan No.Telphone Kantor" class="form-control">
 										</div>
 									</div>
+									<div class="row top-buffer mt-4">
+										<div class="col-12">
+											<label for="">Keterangan</label>
+											<textarea rows="5" type="text" name="Keterangan" id="Keterangan" placeholder="Masukan Keterangan" class="form-control">
+
+										</textarea>
+										</div>
+									</div>
+
 								</fieldset>
 								<button type="submit" class="btn btn-primary"> Simpan</button>
 							</form>
