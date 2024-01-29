@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jadwal extends CI_Controller {
+class Jadwal extends CI_Controller
+{
 
 
 	public function __construct()
@@ -12,10 +13,9 @@ class Jadwal extends CI_Controller {
 		$this->load->library('form_validation');
 
 		// validation login
-		if($this->session->userdata('status') != "login"){
+		if ($this->session->userdata('status') != "login") {
 			redirect(base_url("auth"));
 		}
-		
 	}
 
 	public function index()
@@ -23,14 +23,12 @@ class Jadwal extends CI_Controller {
 
 		$tampilData = $this->M_jadwal->getDataJadwal();
 
-
 		$data = array('tampil' => $tampilData);
 
 
 		$data['title'] = 'PMI - Provinsi Sultra';
 
 		$this->load->view('backend/jadwal_kegiatan', $data);
-		
 	}
 
 
@@ -42,7 +40,7 @@ class Jadwal extends CI_Controller {
 		$ktg = $this->input->post('ket');
 
 
-		$now = date('Y-m-d H:i:s'); 
+		$now = date('Y-m-d H:i:s');
 		$data = array(
 			'waktu' => $wkt,
 			'instansi' => $ins,
@@ -62,14 +60,13 @@ class Jadwal extends CI_Controller {
 
 	public function getAllJAdwal()
 	{
-		
+
 		$data = $this->M_jadwal->getDataJadwalByTime();
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
-
 	}
 
 
-	public function form_edit_jad($id)
+	public function form_edit_jadwal($id)
 	{
 		$editkets = $this->M_jadwal->getTampilkeg($id);
 
@@ -79,7 +76,6 @@ class Jadwal extends CI_Controller {
 		$data['title'] = 'PMI - Provinsi Sultra';
 
 		$this->load->view('backend/edit_kegiatan', $data);
-
 	}
 
 
@@ -94,7 +90,7 @@ class Jadwal extends CI_Controller {
 		$update_by = $this->input->post('update_by');
 		$update_at = $this->input->post('update_at');
 
-		$now = date('Y-m-d H:i:s'); 
+		$now = date('Y-m-d H:i:s');
 
 		$data = array(
 			'waktu' => $wkt,
@@ -103,24 +99,23 @@ class Jadwal extends CI_Controller {
 			'ket' => $ktg,
 			'updated_by' => $this->session->userdata['id'],
 			'updated_at' => $now,
-		);	
-		
+		);
+
 
 		//print_r($data);
 		$update = $this->M_jadwal->updateJadwal($data, $id);
 		$this->session->set_flashdata('flash', 'Diupdate');
 		redirect('jadwal');
-
 	}
 
-	
-	public function aksiHapusKeg($id) {
+
+	public function aksiHapusKeg($id)
+	{
 
 		$this->M_jadwal->deleteKeg($id);
 		$this->session->set_flashdata('flash', 'Dihapus');
 		redirect('jadwal');
 	}
-
 }
 
 /* End of file Jadwal.php */

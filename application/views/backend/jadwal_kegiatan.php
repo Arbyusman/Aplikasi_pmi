@@ -1,4 +1,4 @@
-<?php include 'componen/header.php'?>
+<?php include 'componen/header.php' ?>
 
 
 <div class="container-fluid">
@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="alert alert-success" role="alert">
-					Data  <strong>Berhasil!</strong> <?= $this->session->flashdata('flash'); ?>
+					Data <strong>Berhasil!</strong> <?= $this->session->flashdata('flash'); ?>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -28,7 +28,7 @@
 
 				<!-- Button trigger modal -->
 				<button type="button" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					<i class="fas fa-plus"></i>	Tambah Data
+					<i class="fas fa-plus"></i> Tambah Data
 				</button>
 			</h6>
 		</div>
@@ -51,18 +51,19 @@
 						<?php
 						$no = 1;
 						foreach ($tampil as $key => $data) {
-							?>
+						?>
 							<tr>
 								<td><?= $no++; ?></td>
 								<td><?= $data->waktu; ?></td>
 								<td><?= $data->instansi; ?></td>
 								<td><?= $data->tempat_kegiatan; ?></td>
 								<td><?= $data->ket; ?></td>
-								<td><?= isset($data->updated_by) ? $data->updated_by : $data->created_by; ?></td>
+								<td><?= isset($data->updated_by_username) ? $data->updated_by_username : $data->created_by_username; ?></td>
 								<td><?= isset($data->updated_at) ? $data->updated_at : $data->created_at; ?></td>
 								<td class="text-dark text-nowrap">
-									<a href="<?php echo base_url('jadwal/form_edit_jad/'). $data->id ?>" class="btn btn-warning">Edit</a>
-									<a href="<?php echo base_url('jadwal/aksiHapusKeg/'). $data->id ?>"  Onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+									<a href="<?php echo base_url('jadwal/form_edit_jadwal/' . $data->jadwal_kegiatan_id) ?>" class="btn btn-warning">Edit</a>
+									<a href="<?php echo base_url('jadwal/aksiHapusKeg/' . $data->jadwal_kegiatan_id) ?>" onclick="return confirm('Apakah Anda Yakin Ingin Hapus Data ini!')" class="btn btn-danger">Delete</a>
+
 								</td>
 							</tr>
 						<?php } ?>
@@ -78,7 +79,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form method="POST" action="<?= base_url('jadwal/aksiInsertJad')?>">
+			<form method="POST" action="<?= base_url('jadwal/aksiInsertJad') ?>">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,20 +89,20 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="">Waktu</label>
-						<input type="datetime-local" class="form-control"  name="waktu" placeholder="Masukan Waktu" required>
-					</div> 
+						<input type="datetime-local" class="form-control" name="waktu" placeholder="Masukan Waktu" required>
+					</div>
 					<div class="form-group">
 						<label for="">Instansi</label>
-						<input type="text" class="form-control"  name="instansi" placeholder="Masukan Instansi" required>
+						<input type="text" class="form-control" name="instansi" placeholder="Masukan Instansi" required>
 					</div>
 					<div class="form-group">
 						<label for="">Tempat Kegiatan</label>
-						<input type="text" class="form-control"  name="tempat_kegiatan" placeholder="Masukan Tempat Kegiatan" required>
+						<input type="text" class="form-control" name="tempat_kegiatan" placeholder="Masukan Tempat Kegiatan" required>
 					</div>
 					<div class="form-group">
 						<label for="">Keterangan</label>
 						<textarea class="form-control" name="ket" placeholder="Masukan Keterangan" required></textarea>
-					</div> 
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
@@ -113,20 +114,20 @@
 </div>
 
 <script>
-    // Mendapatkan elemen input time berdasarkan id
-    var timeInput = document.getElementById('update_at');
+	// Mendapatkan elemen input time berdasarkan id
+	var timeInput = document.getElementById('update_at');
 
-    // Mendapatkan jam dan menit saat ini
-    var now = new Date();
-    var hours = String(now.getHours()).padStart(2, '0');
-    var minutes = String(now.getMinutes()).padStart(2, '0');
+	// Mendapatkan jam dan menit saat ini
+	var now = new Date();
+	var hours = String(now.getHours()).padStart(2, '0');
+	var minutes = String(now.getMinutes()).padStart(2, '0');
 
-    // Format string sesuai dengan yang diterima oleh input time (HH:mm)
-    var formattedTime = `${hours}:${minutes}`;
+	// Format string sesuai dengan yang diterima oleh input time (HH:mm)
+	var formattedTime = `${hours}:${minutes}`;
 
-    // Set nilai input time ke nilai waktu saat ini
-    timeInput.value = formattedTime;
+	// Set nilai input time ke nilai waktu saat ini
+	timeInput.value = formattedTime;
 </script>
 
 
-<?php include 'componen/footer.php'?>
+<?php include 'componen/footer.php' ?>

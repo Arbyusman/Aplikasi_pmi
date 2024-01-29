@@ -1,41 +1,50 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_jadwal extends CI_Model {
+class M_jadwal extends CI_Model
+{
 
-	public function getDataJadwal() {
-		$this->db->select('*');
+	public function getDataJadwal()
+	{
+		$this->db->select(
+			'*, jadwal_kegiatan.id as jadwal_kegiatan_id, admin_create.username as created_by_username, admin_update.username as updated_by_username'
+		);
 		$this->db->from('jadwal_kegiatan');
+		$this->db->join('admin as admin_create', 'jadwal_kegiatan.created_by = admin_create.id', 'left');
+		$this->db->join('admin as admin_update', 'jadwal_kegiatan.updated_by = admin_update.id', 'left');
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
-	public function getDataJadwalByTime() {
+
+
+	public function getDataJadwalByTime()
+	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
 		$this->db->order_by('waktu', 'desc'); // Use 'asc' for ascending order
 		$this->db->limit(1);
 		$query = $this->db->get();
-	
+
 		return $query->row();
 	}
 
 
-	public function getDataJadwalById($id) {
-		$this->db->where('id', $id); 
+	public function getDataJadwalById($id)
+	{
+		$this->db->where('id', $id);
 		$this->db->from('jadwal_kegiatan');
 		$query = $this->db->get();
-		
+
 		return $query->row();
 	}
-	
+
 
 	public function getDataJadwal3()
 	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
-		$this->db->order_by('id', 'ASC'); 
-		$this->db->limit(3); 
+		$this->db->order_by('id', 'ASC');
+		$this->db->limit(3);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -46,43 +55,44 @@ class M_jadwal extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('jadwal_kegiatan');
-		$this->db->order_by('id', 'ASC'); 
+		$this->db->order_by('id', 'ASC');
 		$query = $this->db->get();
 		return $query->row();
 	}
 
 
 
-	public function getDataJadwalFront($datetime) {
+	public function getDataJadwalFront($datetime)
+	{
 
 
-		 // Konversi input datetime-local ke format datetime MySQL
+		// Konversi input datetime-local ke format datetime MySQL
 		$datetimelocal = date('Y-m-d H:i:s', strtotime($datetime));
 
 		$this->db->where('waktu', $datetimelocal);
 		$query = $this->db->get('jadwal_kegiatan');
 
 		return $query->result();
-
 	}
 
-	public function inputJad($data) {
+	public function inputJad($data)
+	{
 
 		return $this->db->insert('jadwal_kegiatan', $data);
-
 	}
 
-	public function getTampilkeg($id) {
+	public function getTampilkeg($id)
+	{
 		$this->db->where('id', $id);
 		$query = $this->db->get('jadwal_kegiatan');
 		return $query->row();
 	}
 
-	public function updateJadwal($data, $id) {
+	public function updateJadwal($data, $id)
+	{
 
 		$this->db->where('id', $id);
 		$this->db->update('jadwal_kegiatan', $data);
-
 	}
 
 	public function deleteKeg($id)
@@ -90,7 +100,6 @@ class M_jadwal extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete('jadwal_kegiatan');
 	}
-
 }
 
 /* End of file M_jadwal.php */
