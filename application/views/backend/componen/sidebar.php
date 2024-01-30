@@ -1,4 +1,3 @@
-
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -15,73 +14,76 @@
 
 	<!-- Nav Item - Dashboard -->
 	<li class="nav-item">
-		<a class="nav-link" href="<?= base_url('dashboard')?>">
+		<a class="nav-link" href="<?= base_url('dashboard') ?>">
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>Dashboard</span></a>
-		</li>
-		
-		<!-- Divider -->
-		<hr class="sidebar-divider">
+	</li>
 
-		<!-- Nav Item - Pages Collapse Menu -->
-		<li class="nav-item">
-			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-			aria-expanded="true" aria-controls="collapseTwo">
+	<!-- Divider -->
+	<hr class="sidebar-divider">
+
+	<!-- Nav Item - Pages Collapse Menu -->
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
 			<span>Donor Darah</span>
 		</a>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<!-- <a class="collapse-item" href="<?= base_url('ketersediaan')?>">Ketersediaan Darah</a>
-					<a class="collapse-item" href="<?= base_url('golongan_darah_id')?>">Golongan Darah</a> -->
-					<a class="collapse-item" href="<?= base_url('ketersediaan/datapendonor')?>">Data Pendonor</a>
-					<a class="collapse-item" href="<?= base_url('jadwal')?>">Jadwal Kegiatan</a>
-					<a class="collapse-item" href="<?= base_url('data_user')?>">Data User</a>
-					<a class="collapse-item" href="<?= base_url('ketersediaan/gabungan')?>">Stok Darah</a>
-				</div>
+				<!-- <a class="collapse-item" href="<?= base_url('ketersediaan') ?>">Ketersediaan Darah</a>
+					<a class="collapse-item" href="<?= base_url('golongan_darah_id') ?>">Golongan Darah</a> -->
+				<a class="collapse-item" href="<?= base_url('ketersediaan/datapendonor') ?>">Data Pendonor</a>
+				<a class="collapse-item" href="<?= base_url('jadwal') ?>">Jadwal Kegiatan</a>
+				<a class="collapse-item" href="<?= base_url('data_user') ?>">Data User</a>
+				<a class="collapse-item" href="<?= base_url('ketersediaan/gabungan') ?>">Stok Darah</a>
 			</div>
-		</li>
+		</div>
+	</li>
 
-		<!-- Divider -->
-		<hr class="sidebar-divider">
-		<!-- Nav Item - Charts -->
-		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url('tentang_admin')?>">
-				<i class="fas fa-book"></i>
-				<span>Tentang</span></a>
-			</li>
+	<!-- Divider -->
+	<hr class="sidebar-divider">
+	<!-- Nav Item - Charts -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('tentang_admin') ?>">
+			<i class="fas fa-book"></i>
+			<span>Tentang</span></a>
+	</li>
 
-			<!-- Nav Item - Tables -->
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('kontak')?>">
-					<i class="fas fa-phone-square-alt"></i>
-					<span>Kontak</span></a>
-				</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Testimoni') ?>">
+			<i class="fas fa-book"></i>
+			<span>Ucapan</span></a>
+	</li>
 
-
-				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url('pesan')?>">
-						<i class="fas fa-bookmark"></i>
-						<span>Pesan</span></a>
-					</li>
-
-					<!-- Divider -->
-					<hr class="sidebar-divider d-none d-md-block">
-
-					<style>
-						
-						#sidebarToggle {
-							border: none !important;
-							border-radius: 50% !important;
-						}
-					</style>
-
-					<!-- Sidebar Toggler (Sidebar) -->
-					<div class="text-center d-none d-md-inline">
-						<button class="rounded-circle border-0" id="sidebarToggle"></button>
-					</div>
+	<!-- Nav Item - Tables -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('kontak') ?>">
+			<i class="fas fa-phone-square-alt"></i>
+			<span>Kontak</span></a>
+	</li>
 
 
-				</ul>
-				<!-- End of Sidebar -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('pesan') ?>">
+			<i class="fas fa-bookmark"></i>
+			<span>Pesan</span></a>
+	</li>
 
+	<!-- Divider -->
+	<hr class="sidebar-divider d-none d-md-block">
+
+	<style>
+		#sidebarToggle {
+			border: none !important;
+			border-radius: 50% !important;
+		}
+	</style>
+
+	<!-- Sidebar Toggler (Sidebar) -->
+	<div class="text-center d-none d-md-inline">
+		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+	</div>
+
+
+</ul>
+<!-- End of Sidebar -->
