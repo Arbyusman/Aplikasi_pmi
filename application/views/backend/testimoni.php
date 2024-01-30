@@ -76,11 +76,9 @@
 									</td>
 									<td><?= isset($testimoni->updated_at) ? $testimoni->updated_at : $testimoni->created_at; ?></td>
 									<td>
-
-										<a href="">Hapus</a>
-										<a href="">Edit</a>
-
-									<td>
+										<a class="btn btn-danger" href="<?= base_url('Testimoni/delete/' . $testimoni->testimoni_id) ?>" onclick="return confirm('Are you sure you want to delete this testimoni?')">Hapus</a>
+										<a class="btn btn-warning" href="<?= base_url('Testimoni/edit/' . $testimoni->testimoni_id) ?>">Edit</a>
+									</td>
 
 								</form>
 							</tr>

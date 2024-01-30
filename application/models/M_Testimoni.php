@@ -8,7 +8,7 @@ class M_Testimoni extends CI_Model
     public function getTestimonies()
     {
         $this->db->select(
-            '*,
+            '*,  testimoni.id as testimoni_id,
         admin_create.username as created_by_username,
         admin_update.username as updated_by_username,'
         );
